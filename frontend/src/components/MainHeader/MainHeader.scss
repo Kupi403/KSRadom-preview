@@ -1,0 +1,78 @@
+.header {
+	// position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 800px;
+	// padding: 1em;
+	&__title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		text-transform: uppercase;
+		width: 100%;
+		background: linear-gradient(90deg, #eeeeee 40%, #ebebeb 60%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		font-size: 64px;
+		text-align: center;
+		span {
+			// -webkit-text-stroke: 2px white;
+			background: transparent;
+			color: transparent;
+		}
+	}
+	&__hero {
+		position: absolute;
+		height: 100%;
+		max-height: 800px;
+		width: 100%;
+		z-index: -2;
+		background-size: cover;
+		background-position: 80% 30%;
+		opacity: 0;
+		// transform: scale(1.1);
+		transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+		will-change: opacity, transform;
+
+		&--active {
+			opacity: 1;
+			transform: scale(1);
+			z-index: -2;
+		}
+
+		&--shadow {
+			position: absolute;
+			inset: 0;
+			height: 100%;
+			max-height: 800px;
+			width: 100%;
+			z-index: -1;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+	}
+
+	@keyframes slideIn {
+		0% {
+			opacity: 0;
+			// transform: scale(1.1);
+		}
+		100% {
+			opacity: 1;
+			// transform: scale(1);
+		}
+	}
+
+	// Dodajemy animację dla wychodzącego slajdu
+	@keyframes slideOut {
+		0% {
+			opacity: 1;
+			// transform: scale(1);
+		}
+		100% {
+			opacity: 0;
+			// transform: scale(0.9);
+		}
+	}
+}
