@@ -12,13 +12,14 @@
 		flex-direction: column;
 		text-transform: uppercase;
 		width: 100%;
-		background: linear-gradient(90deg, #eeeeee 40%, #ebebeb 60%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
+		// background: linear-gradient(90deg, #eeeeee 40%, #ebebeb 60%);
+		// -webkit-background-clip: text;
+		// -webkit-text-fill-color: transparent;
 		font-size: 64px;
 		text-align: center;
+		color: white;
 		span {
-			// -webkit-text-stroke: 2px white;
+			-webkit-text-stroke: 2px white;
 			background: transparent;
 			color: transparent;
 		}

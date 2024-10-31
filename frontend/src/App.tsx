@@ -2,24 +2,25 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Navbar from './components/Navbar/Nav'
 import MainHeader from './components/MainHeader/MainHeader'
-import BackgroundSlider from 'react-background-slider'
+import NewsCard from './components/UI/NewsCard/NewsCard'
+import { News } from './types/newsType'
+import SectionContainer from './components/UI/SectionContainer'
 
 function App() {
-	type Post = {
-		title: string
-		// text: { type: string; children: { text: string }[] }[]
-		text: string
-		documentId: string
-	}
 	const URL = import.meta.env.VITE_BACKEND
-	const [posts, setPosts] = useState<Post[]>([])
+	const [news, setNews] = useState<any[]>([])
 
 	useEffect(() => {
-		fetch(`${URL}api/posts`)
-			.then(res => res.json())
+		fetch(`${URL}api/posts?populate=*`)
+			// fetch('https://bus20-api-lnp2.laczynaspilka.pl/api/lnp/v1')
+			.then(res =>
+				// console.log(res)
+				res.json()
+			)
 			.then(data => {
-				const posts = data.data
-				setPosts(posts)
+				console.log(data)
+				const news = data.data
+				setNews(news)
 			})
 	}, [])
 
@@ -28,29 +29,21 @@ function App() {
 			<Navbar />
 			<MainHeader />
 			<main className='main'>
-				<section className='posts'>
-					<h1 className='section-title'>Aktualności</h1>
-					{posts.map(post => {
-						console.log(post)
+				<SectionContainer
+					title='Aktualności'
+					width='60%'>
+					{news.map(news => {
 						return (
-							<div
-								className='posts__post'
-								key={post.documentId}>
-								<div className='posts__post--image'>
-									<img
-										src='https://picsum.photos/300/200'
-										alt=''
-									/>
-								</div>
-								<div className='posts__post--text'>
-									<h2 className='post__title'>{post.title}</h2>
-									<p className='post__text'>{post.text}</p>
-								</div>
-							</div>
+							<NewsCard
+								key={news.documentId}
+								news={news}
+							/>
 						)
 					})}
-				</section>
-				<section className='other'>
+				</SectionContainer>
+				<SectionContainer
+					title='Kalendarz'
+					width='30%'>
 					<div className='other__calendar'>
 						<h2 className='section-title'>Calendar</h2>
 						<p>
@@ -58,7 +51,7 @@ function App() {
 							molestias dolor inventore maiores vel recusandae, nesciunt doloremque. Quia odit ex odio ad velit natus.
 						</p>
 					</div>
-				</section>
+				</SectionContainer>
 			</main>
 		</>
 	)

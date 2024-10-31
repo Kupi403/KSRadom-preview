@@ -1,0 +1,33 @@
+@use '../../styles/colors.scss' as *;
+
+.section-container {
+	background-color: $section-background;
+	padding: 1em;
+	border-radius: $radius;
+	box-shadow: $item-shadow;
+
+	&__title {
+		margin: 0.5em 0 1em 0;
+		padding: 0 0.3em;
+		font-size: 2.4rem;
+		color: $gold;
+		background-color: $gold;
+		background: -webkit-linear-gradient(left, $gold, $gold-200);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -10%;
+			left: 0;
+			margin-left: 0.3em;
+			width: 150px;
+			height: 5px;
+			border-radius: $radius;
+			background: $gold;
+			background: linear-gradient(270deg, $light-gold-transparent 0%, $gold 100%);
+		}
+	}
+}
