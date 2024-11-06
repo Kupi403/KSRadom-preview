@@ -24,6 +24,9 @@
 		font-size: $font-hero-small;
 		text-align: center;
 		color: white;
+		-webkit-user-select: none; /* Safari */
+		-ms-user-select: none; /* IE 10 and IE 11 */
+		user-select: none;
 		&--first {
 			-webkit-text-stroke: 1px white;
 			background: transparent;
@@ -43,7 +46,7 @@
 		width: 100%;
 		z-index: -2;
 		background-size: cover;
-		background-position: 80% 30%;
+		background-position: center 30%;
 		opacity: 0;
 		// transform: scale(1.1);
 		transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;

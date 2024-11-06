@@ -99,7 +99,7 @@
 			white-space: nowrap; /* Zapobiega łamaniu tekstu */
 			overflow: hidden;
 			text-overflow: ellipsis;
-			font-size: 1.2rem;
+			font-size: 1rem;
 		}
 	}
 
@@ -122,7 +122,7 @@
 		&--title {
 			margin: 0;
 			padding: 0;
-			font-size: 1.5rem;
+			font-size: 1.2rem;
 			margin-bottom: 0.5em;
 		}
 
@@ -130,6 +130,7 @@
 			display: flex;
 			justify-content: space-between;
 			flex-direction: row;
+			font-size: 0.8rem;
 
 			p {
 				display: flex;
@@ -138,6 +139,22 @@
 
 			svg {
 				margin-right: 0.5em;
+			}
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.news-card {
+		&__data {
+			&--title {
+				font-size: 1.4rem;
+			}
+		}
+
+		&__content{
+			&--text{
+				font-size: 1rem;
 			}
 		}
 	}
