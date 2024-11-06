@@ -1,15 +1,20 @@
 @use '../../styles/colors.scss' as *;
+@use '../../styles/sizes.scss' as *;
 
 .section-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	background-color: $section-background;
 	padding: 1em;
 	border-radius: $radius;
 	box-shadow: $item-shadow;
+	width: 100%;
 
 	&__title {
 		margin: 0.5em 0 1em 0;
 		padding: 0 0.3em;
-		font-size: 2.4rem;
+		font-size: $font-large;
 		color: $gold;
 		background-color: $gold;
 		background: -webkit-linear-gradient(left, $gold, $gold-200);
@@ -23,11 +28,43 @@
 			bottom: -10%;
 			left: 0;
 			margin-left: 0.3em;
-			width: 150px;
-			height: 5px;
+			width: 100%;
+			max-width: 80px;
+			height: 3px;
 			border-radius: $radius;
 			background: $gold;
 			background: linear-gradient(270deg, $light-gold-transparent 0%, $gold 100%);
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	// .main {
+	// 	flex-direction: row;
+	// }
+	.section-container {
+		&__main {
+			width: 50%;
+		}
+
+		&__aside {
+			width: 45%;
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	// .main {
+	// 	flex-direction: row;
+	// }
+	.section-container {
+		
+		&__main {
+			width: 60%;
+		}
+
+		&__aside {
+			width: 40%;
 		}
 	}
 }

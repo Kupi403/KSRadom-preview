@@ -6,7 +6,6 @@ import i3 from '../../assets/hero-3.jpg'
 import i4 from '../../assets/hero-4.jpg'
 import i5 from '../../assets/hero-5.jpg'
 
-
 // import { motion, useScroll } from 'framer-motion'
 
 const MainHeader = () => {
@@ -37,11 +36,17 @@ const MainHeader = () => {
 					/>
 				)
 			})}
-
+			{/* <div
+				key={1}
+				className='header__hero'
+				style={{
+					backgroundImage: `url(${images[0]})`,opacity:1,
+				}}></div> */}
 			<div className='header__hero--shadow'></div>
 
 			<h1 className='header__title'>
-				<span>komisja sędziowska </span> radom
+				<span className='header__title--first'>komisja sędziowska</span>{' '}
+				<span className='header__title--second'>radom</span>
 			</h1>
 		</header>
 	)

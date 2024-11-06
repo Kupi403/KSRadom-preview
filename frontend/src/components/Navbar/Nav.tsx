@@ -1,8 +1,9 @@
 import './Nav.scss'
-import logo from '../../assets/logo.png'
-
+import logo from '../../assets/logo2.png'
+import { Sling as Hamburger } from 'hamburger-react'
 import NavItemsContainer from './NavItemsContainer'
 import { NavItemSubcategory } from '../../types/navTypes'
+// import ThemeButton from '../UI/Buttons/ThemeButton'
 const Navbar = () => {
 	const leftPanelLinks: NavItemSubcategory[] = [
 		{
@@ -36,6 +37,16 @@ const Navbar = () => {
 				</a>
 				<span className='navbar__logo--circle'></span>
 			</div>
+
+			{/* <ThemeButton></ThemeButton> */}
+
+			<Hamburger
+				size={36}
+				rounded
+				color='#f5f5f5'
+				label='Menu'
+				hideOutline={false}
+			/>
 
 			<NavItemsContainer
 				type='right'

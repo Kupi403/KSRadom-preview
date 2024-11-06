@@ -8,6 +8,7 @@ const NavItemsContainer: React.FC<NavItemsContainerProps> = ({ type, items }) =>
 			{items.map((item, id) => (
 				<NavItem
 					key={id}
+					index={id}
 					text={item.text}
 					subcategories={item.subcategories}
 				/>

@@ -9,6 +9,7 @@ export type NavItemsContainerProps = {
 }
 export type NavItemProps = {
 	text: string
+	index: number
 	address?: string
 	subcategories?: string[]
 }
