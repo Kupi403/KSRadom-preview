@@ -1,6 +1,10 @@
 @use '../../styles/sizes.scss' as s;
 @use '../../styles/colors.scss' as c;
 
+.hamburger-react {
+	z-index: 1001;
+}
+
 .navbar {
 	position: fixed;
 	display: flex;
@@ -17,21 +21,37 @@
 
 	padding: 0 1em;
 
-	background-image: url('../../assets/mzpn-background.png');
-	background-color: #5f0917;
-	background-size: cover;
-	background-position: center;
-
 	border-radius: 5px;
 	box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.75);
 
-	z-index: 10;
+	z-index: 999;
 
-	opacity: 0.9;
-	transition: opacity 0.2s;
+	// opacity: 0.9;
 
-	&:hover,
-	&:hover .navbar__logo--circle {
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-image: url('../../assets/mzpn-background.png');
+		background-color: #5f0917;
+		background-size: cover;
+		background-position: center;
+		opacity: 0.9;
+		border-radius: 5px;
+		z-index: -1;
+		transition: opacity 0.2s;
+	}
+
+	&:hover::after,
+	.navbar__logo:hover ~ &::after,
+	.hamburger:hover ~ &::after {
+		opacity: 1;
+	}
+
+	&:hover::after ~ &__logo--circle {
 		opacity: 1;
 	}
 
@@ -112,6 +132,18 @@
 		}
 	}
 
+	&__mobile {
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		background-color: #fff;
+		z-index: 1000;
+	}
+
 	&__submenu {
 		// display: flex;
 		flex-direction: column;
@@ -168,11 +200,15 @@
 		// position: absolute;
 
 		// left: 50%;
-
+		transform: scale(1.1);
 		// transform: translateX(-50%);
 		z-index: 1;
 		object-fit: cover;
 		overflow: hidden;
+		transition: transform 0.3s;
+		&--active {
+			transform: scale(1);
+		}
 
 		img {
 			width: 100%;
@@ -193,8 +229,12 @@
 			// height: 100px;
 			padding: 0.2em;
 			background-color: #5f0917;
-			opacity: 0.8;
+			opacity: 0;
 			transition: opacity 0.3s;
+
+			&--active {
+				opacity: 1;
+			}
 		}
 
 		&--image {

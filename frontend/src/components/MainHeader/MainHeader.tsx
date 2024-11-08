@@ -5,11 +5,19 @@ import i2 from '../../assets/hero-2.jpg'
 import i3 from '../../assets/hero-3.jpg'
 import i4 from '../../assets/hero-4.jpg'
 import i5 from '../../assets/hero-5.jpg'
+import i6 from '../../assets/hero-6.jpg'
+import i7 from '../../assets/hero-7.jpg'
+import i8 from '../../assets/hero-8.jpg'
+import i9 from '../../assets/hero-9.jpg'
+import i10 from '../../assets/hero-10.jpg'
+import i11 from '../../assets/hero-11.jpg'
+import i12 from '../../assets/hero-12.jpg'
+import i13 from '../../assets/hero-13.jpg'
 
 // import { motion, useScroll } from 'framer-motion'
 
 const MainHeader = () => {
-	const images = [i1, i2, i3, i4, i5]
+	const images = [i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13]
 
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
 

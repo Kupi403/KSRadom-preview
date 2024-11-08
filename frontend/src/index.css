@@ -12,8 +12,8 @@
 }
 
 ::selection {
-	background-color: #5f0917;
-	color: #e4b340;
+	/* background-color: #5f0917; */
+	background-color: #ad2c3788;
 }
 
 html {
@@ -32,7 +32,7 @@ body {
 	width: 100%;
 }
 
-a {
+a, .hamburger-react {
 	-webkit-tap-highlight-color: transparent;
 }
 

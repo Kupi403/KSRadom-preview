@@ -3,6 +3,14 @@ export type NavItemSubcategory = {
 	subcategories?: string[]
 }
 
+
+
+export type NavMobileItemProps = {
+	items: NavItemSubcategory[]
+	isMobileMenuOpen: boolean
+	setIsMobileMenuOpen: (value: boolean) => void
+}
+
 export type NavItemsContainerProps = {
 	type: string
 	items: NavItemSubcategory[]

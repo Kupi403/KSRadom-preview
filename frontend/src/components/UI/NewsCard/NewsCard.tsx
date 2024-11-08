@@ -9,6 +9,21 @@ import { MdDateRange } from 'react-icons/md'
 
 const NewsCard: React.FC<any> = ({ news }) => {
 	console.log(news && news)
+	const newsDate = new Date(news.publishedAt)
+	const dateString = newsDate.toLocaleDateString('pl', {
+		// weekday: 'long',
+		year: 'numeric',
+		month: '2-digit',
+		day: '2-digit',
+	})
+
+	const timeString = newsDate.toLocaleTimeString('pl', {
+		hour: '2-digit',
+		minute: '2-digit',
+	})
+
+	// console.log(dateString + ', ' + timeString)
+
 	return (
 		<a
 			className='news-card'
@@ -16,16 +31,18 @@ const NewsCard: React.FC<any> = ({ news }) => {
 			<div className='news-card__image'>
 				<img
 					src={`${import.meta.env.VITE_BACKEND}${news.media && news.media[0].formats.small.url}`}
-					alt={news.media[0].alternativeText || news.title}
+					alt={news.media[0].alternativeText || 'Zdjecie'}
 				/>
-				<span className='news-card__image--tag'>{news.categories[0].category}</span>
+				<span className='news-card__image--tag'>
+					{news.categories[0] ? news.categories[0].category : 'aktualnosc'}
+				</span>
 			</div>
 			<div className='news-card__content'>
 				<div className='news-card__data'>
-					<h3 className='news-card__data--title'>{news.title}</h3>
+					<h3 className='news-card__data--title'>{news.title || 'Tytuł'}</h3>
 					<div className='news-card__data--info'>
 						<p className='news-card__data--date'>
-							<MdDateRange color='#797979' /> <span>10.10.2021, 13:20</span>
+							<MdDateRange color='#797979' /> <span>{dateString + ', ' + timeString}</span>
 						</p>
 						<p className='news-card__data--userdata'>
 							<FaUser color='#797979' />

@@ -8,3 +8,8 @@ export type News = {
 	dateToPublish: string | null
 	id: number
 }
+export type fetchedNews  = {
+	loading:boolean
+	error:string
+	data: News[]
+}

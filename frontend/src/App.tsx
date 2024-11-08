@@ -3,29 +3,21 @@ import './App.css'
 import Navbar from './components/Navbar/Nav'
 import MainHeader from './components/MainHeader/MainHeader'
 import NewsCard from './components/UI/NewsCard/NewsCard'
-// import { News } from './types/newsType'
+import { News } from './types/newsType'
 import SectionContainer from './components/UI/SectionContainer'
+import { useFetch } from './helpers/useFetch'
 
 // import Wrapper from './components/UI/Wrapper/Wrapper'
 
 function App() {
-	const URL = import.meta.env.VITE_BACKEND
-	const [news, setNews] = useState<any[]>([])
+	type fetchedNews = {
+		loading: boolean
+		error: string
+		data: News[]
+	}
+	const { loading: boolean, error: string, data = [] as News[] } = useFetch('posts')
 
-	useEffect(() => {
-		fetch(`${URL}api/posts?populate=*`)
-			// fetch('https://bus20-api-lnp2.laczynaspilka.pl/api/lnp/v1')
-			.then(res =>
-				// console.log(res)
-				res.json()
-			)
-			.then(data => {
-				// console.log(data)
-				const news = data.data
-				setNews(news)
-			})
-	}, [])
-
+	// console.log(data)
 	return (
 		<>
 			{/* <Wrapper> */}
@@ -38,14 +30,20 @@ function App() {
 						title='Aktualności'
 						priority='main'>
 						<div className='news'>
-							{news.map(news => {
-								return (
-									<NewsCard
-										key={news.documentId}
-										news={news}
-									/>
-								)
-							})}
+							{data.length > 0 ? (
+								data
+									// .sort((a, b) => (a.publishedAt > b.publishedAt ? -1 : 1))
+									.map(news => {
+										return (
+											<NewsCard
+												key={news.documentId}
+												news={news}
+											/>
+										)
+									})
+							) : (
+								<p>Brak aktualności</p>
+							)}
 						</div>
 					</SectionContainer>
 
