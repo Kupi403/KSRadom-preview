@@ -1,0 +1,45 @@
+.wrapper {
+	margin: 0 auto;
+	max-width: 1600px;
+	width: 100%;
+}
+
+.hamburger-react {
+	-webkit-tap-highlight-color: transparent;
+}
+
+.section-content {
+	z-index: 1;
+}
+
+.main {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1em;
+	align-items: flex-start;
+	/* margin: 0 auto; */
+	/* width: 100%; */
+	padding: 1em;
+	/* margin: 0 1em; */
+	min-height: 50vh;
+	height: 100vh;
+	z-index: 0;
+}
+
+.aside {
+	position: sticky;
+	top: 80px; /* Ustal wysokość od górnej krawędzi ekranu */
+	align-self: flex-start; /* Aby zachować pozycję */
+	flex: 1;
+	height: auto; /* Dopasowuje wysokość */
+	background-color: #f9f9f9; /* Opcjonalnie: kolor tła */
+	padding: 1em;
+}
+
+@media (min-width: 768px) {
+	.main {
+		flex-direction: row;
+	}
+}

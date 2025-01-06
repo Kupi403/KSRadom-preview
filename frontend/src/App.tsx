@@ -17,13 +17,15 @@ function App() {
 	}
 	const { loading: boolean, error: string, data = [] as News[] } = useFetch('posts')
 
+	const [headerHeight, setHeaderHeight] = useState<number>(0)
+
 	// console.log(data)
 	return (
 		<>
 			{/* <Wrapper> */}
-			<Navbar />
+			<Navbar headerHeight={headerHeight} />
 			{/* </Wrapper> */}
-			<MainHeader />
+			<MainHeader setHeaderHeight={setHeaderHeight} />
 			<div className='wrapper'>
 				<main className='main'>
 					<SectionContainer

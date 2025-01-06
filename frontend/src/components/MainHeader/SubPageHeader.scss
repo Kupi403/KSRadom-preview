@@ -1,0 +1,37 @@
+.subpage-header {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 400px;
+	height: 70vh;
+	max-height: 300px;
+
+	&__title {
+		color: white;
+		a {
+			text-transform: uppercase;
+			color: white;
+		}
+	}
+
+	&__hero {
+		position: absolute;
+		height: 100%;
+		// max-height: 800px;
+		width: 100%;
+		z-index: -2;
+		background-size: cover;
+		background-position: center;
+
+		&--shadow {
+			position: absolute;
+			inset: 0;
+			height: 100%;
+			max-height: 800px;
+			width: 100%;
+			z-index: -1;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+	}
+}

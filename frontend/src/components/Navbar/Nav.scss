@@ -79,6 +79,7 @@
 	}
 
 	&__item {
+		position: relative;
 		margin-right: 0.2em;
 
 		&:last-child {
@@ -87,9 +88,11 @@
 	}
 
 	&__link {
-		position: relative;
+		// position: relative;
 		display: flex;
 		justify-content: center;
+		align-items: center;
+		gap: 0.5em;
 		text-decoration: none;
 		color: #fff;
 		font-size: s.$font-small;
@@ -117,10 +120,6 @@
 			transition: opacity 0.3s;
 		}
 
-		img {
-			padding: 0 0.5em;
-		}
-
 		&:hover::after {
 			opacity: 1;
 		}
@@ -145,7 +144,7 @@
 	}
 
 	&__submenu {
-		// display: flex;
+		display: flex;
 		flex-direction: column;
 		list-style: none;
 		// visibility: hidden;
@@ -228,7 +227,7 @@
 			width: 80px;
 			// height: 100px;
 			padding: 0.2em;
-			background-color: #5f0917;
+			background: c.$red-gradient;
 			opacity: 0;
 			transition: opacity 0.3s;
 

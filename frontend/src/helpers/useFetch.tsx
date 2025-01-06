@@ -1,19 +1,30 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 
-export function useFetch(endpoint: string) {
+export function useFetch(endpoint: string, type: 'posts' | 'post', id?: number | string) {
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
 	const [data, setData] = useState([])
 
-	const URL = import.meta.env.VITE_BACKEND
+	// const URL = import.meta.env.VITE_BACKEND
+	// const URL = 'http://93.127.214.207/api'
+	const URL = 'http://localhost:1337/api'
+	const queryString = '?populate=*&sort[0]=publishedAt:desc&pagination[pageSize]=10&pagination[page]=1'
+	const queryPostString = '?populate=*'
+
+	const queryStrings = {
+		posts: '?populate=*&sort[0]=publishedAt:desc&pagination[pageSize]=10&pagination[page]=1',
+		post: `/${id}?populate=*`,
+	}
 
 	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true)
 			setError(null)
 			try {
-				// console.log(`${URL}api/${endpoint}?populate=*`)
-				const res = await fetch(`${URL}api/${endpoint}?populate=*`)
+				console.log(`${URL}/${endpoint}${queryStrings[type]}`)
+				const res = await fetch(`${URL}/${endpoint}${queryStrings[type]}`)
 				if (!res.ok) {
 					throw new Error(`${res.status} ${res.statusText}`)
 				}

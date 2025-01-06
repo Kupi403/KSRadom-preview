@@ -25,9 +25,9 @@ const NavMobile: React.FC<NavMobileItemProps> = ({ items, isMobileMenuOpen, setI
 										className='navbar-mobile__menu--item navbar-mobile__submenu--item'
 										onClick={() => setIsMobileMenuOpen(false)}>
 										<a
-											href='#'
+											href={sub.address}
 											className='navbar-mobile__menu--link navbar-mobile__submenu--link'>
-											{sub}
+											{sub.text}
 										</a>
 									</li>
 								))}

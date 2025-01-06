@@ -1,60 +1,45 @@
 // import { News } from '../../../types/newsType'
+import { useEffect, useState } from 'react'
 import './NewsCard.scss'
 import { FaUser } from 'react-icons/fa'
 import { MdDateRange } from 'react-icons/md'
+import useSetDate from '@/helpers/useSetDate'
+import Link from 'next/link'
+import NewsDateAndCreatorInfo from '../NewsDateAndCreatorInfo'
+import { Post } from '@/types/PostType'
+type NewsCardProps = {
+	news: Post
+}
 
-// type NewsCardProps = {
-// 	news: News
-// }
-
-const NewsCard: React.FC<any> = ({ news }) => {
-	console.log(news && news)
-	const newsDate = new Date(news.publishedAt)
-	const dateString = newsDate.toLocaleDateString('pl', {
-		// weekday: 'long',
-		year: 'numeric',
-		month: '2-digit',
-		day: '2-digit',
-	})
-
-	const timeString = newsDate.toLocaleTimeString('pl', {
-		hour: '2-digit',
-		minute: '2-digit',
-	})
-
-	// console.log(dateString + ', ' + timeString)
+const NewsCard: React.FC<NewsCardProps> = ({ news }) => {
+	const urlsString = 'localhost:1337'
 
 	return (
-		<a
+		<Link
 			className='news-card'
-			href='#'>
+			// href={`/aktualnosci/${news.documentId}`}
+			href='/aktualnosci/[documentId]'
+			as={`/aktualnosci/${news.slug}-${news.documentId}`}
+			scroll>
 			<div className='news-card__image'>
 				<img
-					src={`${import.meta.env.VITE_BACKEND}${news.media && news.media[0].formats.small.url}`}
-					alt={news.media[0].alternativeText || 'Zdjecie'}
+					src={`http://${urlsString}${news.thumbnail && news.thumbnail.formats.small.url}`}
+					alt={`${news.thumbnail.alternativeText ? news.thumbnail.alternativeText : 'Zdjecie'}`}
 				/>
-				<span className='news-card__image--tag'>
-					{news.categories[0] ? news.categories[0].category : 'aktualnosc'}
-				</span>
+				<span className='news-card__image--tag'>{news.categories[0] ? news.categories[0].name : 'aktualnosc'}</span>
 			</div>
 			<div className='news-card__content'>
 				<div className='news-card__data'>
 					<h3 className='news-card__data--title'>{news.title || 'Tytuł'}</h3>
-					<div className='news-card__data--info'>
-						<p className='news-card__data--date'>
-							<MdDateRange color='#797979' /> <span>{dateString + ', ' + timeString}</span>
-						</p>
-						<p className='news-card__data--userdata'>
-							<FaUser color='#797979' />
-
-							<span>M.K</span>
-						</p>
-					</div>
+					<NewsDateAndCreatorInfo
+						createdBy={news.createdBy}
+						publishedAt={news.publishedAt}
+					/>
 				</div>
-				<p className='news-card__content--text'>{news.text.substring(0, 150)}</p>
+				<p className='news-card__content--text'>{news.description.substring(0, 150)}</p>
 				<p style={{ marginTop: '1em' }}>Więcej ▶</p>
 			</div>
-		</a>
+		</Link>
 	)
 }
 

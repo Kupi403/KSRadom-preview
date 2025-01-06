@@ -1,9 +1,8 @@
 export type NavItemSubcategory = {
 	text: string
-	subcategories?: string[]
+	address: string
+	subcategories?: { text: string; address: string, isExternal?: boolean }[]
 }
-
-
 
 export type NavMobileItemProps = {
 	items: NavItemSubcategory[]
@@ -16,8 +15,6 @@ export type NavItemsContainerProps = {
 	items: NavItemSubcategory[]
 }
 export type NavItemProps = {
-	text: string
 	index: number
-	address?: string
-	subcategories?: string[]
+	linkItem: NavItemSubcategory
 }

@@ -9,8 +9,7 @@ const NavItemsContainer: React.FC<NavItemsContainerProps> = ({ type, items }) =>
 				<NavItem
 					key={id}
 					index={id}
-					text={item.text}
-					subcategories={item.subcategories}
+					linkItem={item}
 				/>
 			))}
 		</ul>
