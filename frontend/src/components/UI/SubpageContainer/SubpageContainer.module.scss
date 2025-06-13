@@ -1,0 +1,103 @@
+@use '@/styles/colors.scss' as *;
+@use '@/styles/sizes.scss' as *;
+
+// .section-container {
+// 	&::before {
+// 		content: '';
+// 		position: absolute;
+// 		top: 0;
+// 		left: 0;
+// 		width: 100%;
+// 		height: 100px;
+// 		background-image: url('./../../../assets/images/section-white.png');
+// 		background-position: center;
+// 		background-size: cover;
+// 		opacity: 0.5;
+// 		z-index: -1;
+// 	}
+// }
+
+.section-container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: $section-background;
+	padding: 1em;
+	border-radius: $radius;
+	box-shadow: $item-shadow;
+	width: 100%;
+	overflow: hidden;
+	z-index: -2;
+
+	&__aside {
+		width: 100%;
+		z-index: 1;
+	}
+
+	&__subpage {
+		margin: 1em 0;
+		width: 100%;
+		z-index: 0;
+		@media (min-width: 1200px) {
+			display: flex;
+		}
+	}
+
+	.title {
+		margin: 0.5em  0;
+		padding: 0 0.3em;
+		font-size: $font-medium;
+		color: $gold;
+		background-color: $gold;
+		background: -webkit-linear-gradient(left, $gold, $gold-200);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -10%;
+			left: 0;
+			margin-left: 0.3em;
+			width: 100%;
+			max-width: 100px;
+			height: 3px;
+			border-radius: $radius;
+			background: $gold;
+			background: linear-gradient(270deg, $light-gold-transparent 0%, $gold 100%);
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.section-container {
+		// &__main {
+		// 	width: 50%;
+		// }
+
+		&__subpage {
+			width: 100%;
+		}
+
+		// &__aside {
+		// 	width: 50%;
+		// }
+	}
+}
+
+@media (min-width: 1200px) {
+	// .main {
+	// 	flex-direction: row;
+	// }
+	.section-container {
+		&__main {
+			width: 60%;
+		}
+
+		// &__aside {
+		// 	width: 40%;
+		// }
+	}
+}

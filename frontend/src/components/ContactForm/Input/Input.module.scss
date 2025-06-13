@@ -1,0 +1,59 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+
+.input-box {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	.label {
+		font-size: 16px;
+		font-weight: 600;
+		margin-bottom: 10px;
+		color: c.$dark;
+
+		&.button-box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: fit-content;
+			gap: 5px;
+		}
+	}
+	.input {
+		width: 100%;
+		padding: 5px 10px;
+		border: 1px solid #ccc;
+		border-radius: s.$radius;
+		font-size: 16px;
+		line-height: 1.5;
+		transition: border-color 0.2s;
+
+		&:focus {
+			outline: none;
+			border-color: #888;
+		}
+	}
+
+	.textarea {
+		@extend .input;
+		resize: vertical;
+		min-height: 100px;
+
+		max-height: 600px;
+		overflow: auto;
+	}
+
+	.errorContainer {
+		height: 30px;
+
+		.message {
+			color: c.$light-red;
+			margin-top: 5px;
+			font-size: 12px;
+
+			@media (min-width: 768px) {
+				font-size: 14px;
+			}
+		}
+	}
+}

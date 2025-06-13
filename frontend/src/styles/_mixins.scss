@@ -1,0 +1,23 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+
+@mixin shimmer-effect($duration: 3s, $opacity-start: 0.4, $opacity-end: 0.8, $color: c.$card-background) {
+	background: linear-gradient(90deg, c.$gray-medium 25%, c.$section-background 50%, c.$gray-medium 75%);
+	background-size: 200% 100%;
+	animation: shimmer-colors $duration infinite linear;
+
+	@keyframes shimmer-colors {
+		0% {
+			opacity: $opacity-start;
+			background-position: -100% 0;
+		}
+		50% {
+			opacity: $opacity-end;
+			background-position: 0 0;
+		}
+		100% {
+			opacity: $opacity-start;
+			background-position: 100% 0;
+		}
+	}
+}

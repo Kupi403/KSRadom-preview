@@ -1,0 +1,126 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+@use '@/styles/mixins.scss' as m;
+
+.loading {
+	width: 150px;
+	height: 35px;
+	gap: 4px;
+	color: c.$dark;
+	background-color: c.$card-background;
+	border-radius: s.$radius;
+	border: none;
+	box-shadow: c.$item-shadow;
+	@include m.shimmer-effect();
+}
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	padding: 10px;
+	color: c.$dark;
+	background-color: c.$card-background;
+	cursor: pointer;
+	border-radius: s.$radius;
+	border: none;
+	box-shadow: c.$item-shadow;
+	transition: background-color 0.3s;
+
+	&:hover {
+		background-color: c.$section-background;
+	}
+
+	span {
+		font-weight: 500;
+	}
+
+	&.clicked {
+		background-color: c.$gold-200;
+	}
+}
+.hidden {
+	pointer-events: none;
+	opacity: 0.5;
+}
+.container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	// z-index: 15;
+
+	ul,
+	ol,
+	li {
+		margin-inline-start: 0;
+	}
+
+	.chevron {
+		transition: transform 0.3s;
+		color: c.$dark;
+	}
+
+	.rotate {
+		transform: rotate(180deg);
+	}
+
+	.dropdown {
+		position: absolute;
+		top: 120%;
+		width: 100%;
+		max-width: 200px;
+		max-height: 300px;
+		background-color: c.$card-background;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		border-radius: s.$radius;
+		box-shadow: c.$item-shadow;
+		overflow-x: hidden;
+		overflow-y: auto;
+		z-index: 100;
+
+
+		&::-webkit-scrollbar {
+			width: 8px;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: c.$gray-medium;
+			border-radius: s.$radius;
+
+			&:hover {
+				background-color: c.$gray;
+			}
+		}
+
+		.disabled {
+			user-select: none;
+			pointer-events: none;
+			cursor: not-allowed;
+			color: c.$gray-light;
+		}
+	}
+
+	.dropdownItem {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		padding: 12px;
+		font-size: 14px;
+		background-color: c.$pure-white;
+		color: c.$dark;
+		cursor: pointer;
+		transition: background-color 0.3s;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: c.$section-background;
+		}
+	}
+	.selected {
+		background-color: c.$card-background;
+	}
+}

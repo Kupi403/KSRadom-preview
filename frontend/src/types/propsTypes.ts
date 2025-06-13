@@ -1,8 +1,8 @@
 export interface SectionContainerProps {
+	priority: string
 	isMainPage?: boolean
 	title?: string
-	priority: string
-	subpage: boolean
+	subpage?: boolean
 }
 export interface SubpageSectionContainerProps {
 	isMainPage?: boolean

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaSun, FaMoon } from 'react-icons/fa'
 import './ThemeButton.scss'
 
@@ -8,6 +8,14 @@ const ThemeButton: React.FC = () => {
 	const handleToggle = () => {
 		setIsToggled(prev => !prev)
 	}
+
+	useEffect(() => {
+		if (isToggled) {
+			document.body.classList.add('dark')
+		} else {
+			document.body.classList.remove('dark')
+		}
+	}, [isToggled])
 
 	return (
 		<div className='toggle-container'>

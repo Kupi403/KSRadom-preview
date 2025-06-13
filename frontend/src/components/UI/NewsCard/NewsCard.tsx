@@ -1,43 +1,42 @@
-// import { News } from '../../../types/newsType'
-import { useEffect, useState } from 'react'
-import './NewsCard.scss'
-import { FaUser } from 'react-icons/fa'
-import { MdDateRange } from 'react-icons/md'
-import useSetDate from '@/helpers/useSetDate'
+import styles from './NewsCard.module.scss'
 import Link from 'next/link'
-import NewsDateAndCreatorInfo from '../NewsDateAndCreatorInfo'
-import { Post } from '@/types/PostType'
+import NewsDateAndCreatorInfo from './NewsDateAndCreator/NewsCreationInfo'
+import { NewsType } from '@/types/PostType'
+import Image from 'next/image'
+import { URL } from '@/constant/url'
 type NewsCardProps = {
-	news: Post
+	news: NewsType
+	subpage?: boolean
 }
 
-const NewsCard: React.FC<NewsCardProps> = ({ news }) => {
-	const urlsString = 'localhost:1337'
-
+const NewsCard = ({ news, subpage }: NewsCardProps) => {
 	return (
 		<Link
-			className='news-card'
-			// href={`/aktualnosci/${news.documentId}`}
+			className={`${styles['news-card']} ${subpage ? styles.subpage : styles.mainpage}`}
 			href='/aktualnosci/[documentId]'
 			as={`/aktualnosci/${news.slug}-${news.documentId}`}
 			scroll>
-			<div className='news-card__image'>
-				<img
-					src={`http://${urlsString}${news.thumbnail && news.thumbnail.formats.small.url}`}
+			<div className={styles.image}>
+				<Image
+					src={`${URL}${news.thumbnail && news.thumbnail.formats.small.url}`}
+					fill
+					sizes='(max-width: 768px) 100vw, 50vw'
 					alt={`${news.thumbnail.alternativeText ? news.thumbnail.alternativeText : 'Zdjecie'}`}
 				/>
-				<span className='news-card__image--tag'>{news.categories[0] ? news.categories[0].name : 'aktualnosc'}</span>
+				<span className={styles.tag}>{news.categories[0] ? news.categories[0].name : 'Aktualności'}</span>
 			</div>
-			<div className='news-card__content'>
-				<div className='news-card__data'>
-					<h3 className='news-card__data--title'>{news.title || 'Tytuł'}</h3>
+			<div className={styles.content}>
+				<div
+					className={styles.data}
+					title={news.title.length > 80 ? news.title : undefined}>
+					<h3 className={styles.title}>{news.title || 'Tytuł'}</h3>
 					<NewsDateAndCreatorInfo
 						createdBy={news.createdBy}
-						publishedAt={news.publishedAt}
+						publishedAt={news.publishedAt || '2022-12-12T12:12:12.000Z'}
 					/>
 				</div>
-				<p className='news-card__content--text'>{news.description.substring(0, 150)}</p>
-				<p style={{ marginTop: '1em' }}>Więcej ▶</p>
+				<p className={`${styles.text} ${styles.sliced}`}>{news.shortDescription}</p>
+				<p className={styles['show-more']}>Więcej {'>'}</p>
 			</div>
 		</Link>
 	)

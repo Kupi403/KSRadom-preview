@@ -1,0 +1,43 @@
+.all-news {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 2em;
+
+	.title {
+		font-size: 2rem;
+	}
+}
+
+.header {
+	display: flex;
+	justify-content: end;
+	width: 100%;
+	align-items: center;
+	z-index: 100;
+	margin-bottom: 25px;
+	gap: 10px;
+
+	.options {
+		display: flex;
+		gap: 10px;
+	}
+}
+
+.loading{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 20px;
+	
+	.arrow{
+		background-color: #fff;
+		width: 20px;
+		height: 100%;
+	}
+	.bar{
+		background-color: #fff;
+		width: 50px;
+		height: 100%;
+	}
+}

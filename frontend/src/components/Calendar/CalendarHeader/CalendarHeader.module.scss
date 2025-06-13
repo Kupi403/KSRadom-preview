@@ -1,0 +1,86 @@
+@use '@/styles/sizes' as s;
+@use '@/styles/colors' as c;
+@use '@/styles/mixins.scss' as m;
+
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	.heading {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 40px;
+		padding: 10px 50px;
+		gap: 10px;
+		background-color: c.$card-background;
+		border-radius: s.$radius;
+		box-shadow: c.$item-shadow;
+		&.loading {
+			@include m.shimmer-effect();
+		}
+		h2 {
+			color: c.$dark;
+			font-size: 14px;
+			text-align: center;
+		}
+		button {
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			width: 20%;
+			max-width: 40px;
+			border: 1px solid transparent;
+			background-color: c.$section-background;
+			cursor: pointer;
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: c.$gray-light;
+			}
+
+			&:first-child {
+				left: 0;
+				border-radius: s.$radius 0 0 s.$radius;
+			}
+			&:last-child {
+				right: 0;
+				border-radius: 0 s.$radius s.$radius 0;
+			}
+
+			&:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+		}
+
+		@media (min-width: 512px) {
+			min-width: 300px;
+
+			h2 {
+				font-size: 16px;
+			}
+		}
+	}
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	.options {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 10px;
+
+		@media (min-width: 512px) {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+}

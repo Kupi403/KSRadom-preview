@@ -16,19 +16,34 @@
 
 html {
 	overflow-y: scroll;
+	scroll-behavior: smooth;
 }
 
 body {
+	min-height: 100vh;
 	font-family: 'Rubik', sans-serif;
-	min-height: 200vh;
 	background-color: #d2d2d2;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 a {
 	-webkit-tap-highlight-color: transparent;
 }
 
+ol,
+ul,
+li {
+	margin-inline-start: 20px;
+	line-height: 30px;
+}
 
-.square-box{
-	
+p {
+	line-height: 25px;
+}
+
+button,
+input,
+textarea {
+	font-family: inherit;
 }

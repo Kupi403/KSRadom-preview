@@ -1,0 +1,14 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+
+.aside-calendar {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	.title {
+		color: c.$dark;
+		margin-bottom: 5px;
+		font-weight: 500;
+	}
+}

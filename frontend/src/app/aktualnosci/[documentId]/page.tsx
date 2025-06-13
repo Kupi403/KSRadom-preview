@@ -1,30 +1,45 @@
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
-
-import SectionContainer from '@/components/UI/SectionContainer'
-import styles from '@/styles/layout.module.scss'
-import { Post } from '@/types/PostType'
-import NewsPage from '@/components/NewsPage/NewsPage'
-import CalendarSection from '@/components/Calendar/CalendarSection'
-import SubpageSectionContainer from '@/components/UI/SubpageSectionContainer'
-import UsefulLinks from '@/components/UsefulLinks/UsefulLinks'
+import SectionContainer from '@/components/UI/SectionContainer/SectionContainer'
+import NewsDetails from '@/components/News/NewsDetails/NewsDetails'
 import Aside from '@/components/Aside/Aside'
+import { NewsType } from '@/types/newsType'
+import { API_URL } from '@/constant/url'
 
-async function getPostData(documentId: string): Promise<Post | null> {
+interface PostPageProps {
+	params: { documentId: string }
+}
+export default async function PostPage({ params }: PostPageProps) {
+	if (!params.documentId) {
+		return <p>Ładowanie...</p>
+	}
+
+	const data = await fetchPost(params.documentId.slice(-24))
+
+	if (!data) return notFound()
+
+	return (
+		<>
+			<SectionContainer priority='main'>{data && <NewsDetails post={data} />}</SectionContainer>
+
+			<Aside />
+		</>
+	)
+}
+
+const fetchPost = async (documentId: string): Promise<NewsType | null> => {
 	try {
-		const response = await fetch(
-			`http://localhost:1337/api/posts/${documentId}?populate=*`,
-			{ next: { revalidate: 60 } } // Opcjonalne cachowanie w Next.js
-		)
-		if (!response.ok) return null
+		const response = await fetch(`${API_URL}/posts/${documentId}?populate=*`)
 
+		if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`)
 		const data = await response.json()
-		console.log(data.data)
+		if (!data?.data) return null
+
 		return {
 			id: data.data.id,
 			documentId: data.data.documentId,
 			title: data.data.title,
 			description: data.data.description,
+			newDescription: data.data.newDescription ? data.data.newDescription : undefined,
 			thumbnail: data.data.thumbnail,
 			categories: data.data.categories,
 			files: data.data.files,
@@ -34,58 +49,6 @@ async function getPostData(documentId: string): Promise<Post | null> {
 			createdBy: data.data.createdBy,
 		}
 	} catch (error) {
-		console.error('Error fetching post data:', error)
-		return null
+		throw new Error('Failed to fetch post data')
 	}
-}
-
-interface PostPageProps {
-	params: { documentId: string }
-}
-
-export default async function PostPage({ params }: PostPageProps) {
-	const { documentId } = await params
-	const post = await getPostData(documentId.slice(-24))
-
-	if (!post) {
-		notFound()
-	}
-
-
-	return (
-		<main className={styles.main + ' ' + styles.main__subpage}>
-			<SectionContainer
-				priority='main'
-				subpage>
-				<NewsPage post={post} />
-			</SectionContainer>
-
-			<Aside />
-			{/* <aside className={styles.aside}>
-				<SectionContainer
-					priority='aside'
-					subpage
-					isMainPage
-					title='Kalendarz'>
-					<CalendarSection />
-				</SectionContainer>
-				<SectionContainer
-					priority='aside'
-					subpage
-					isMainPage
-					title='Przydatne linki'>
-					<UsefulLinks />
-				</SectionContainer>
-			</aside> */}
-
-			{/* <SubpageSectionContainer priority='main'>
-				<NewsPage post={post} />
-			</SubpageSectionContainer>
-			<SubpageSectionContainer
-				isMainPage
-				title='Kalendarz'>
-				<CalendarSection />
-			</SubpageSectionContainer> */}
-		</main>
-	)
 }

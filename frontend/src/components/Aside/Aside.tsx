@@ -1,23 +1,19 @@
-import React from 'react'
-import SectionContainer from '../UI/SectionContainer'
-import CalendarSection from '../Calendar/CalendarSection'
-import UsefulLinks from '../UsefulLinks/UsefulLinks'
-import styles from '@/styles/layout.module.scss'
+import SectionContainer from '../UI/SectionContainer/SectionContainer'
+import AsideCalendar from './AsideCalendar/AsideCalendar'
+import UsefulLinks from './UsefulLinks/UsefulLinks'
+import styles from './Aside.module.scss'
 
 const Aside = () => {
-	
 	return (
 		<aside className={styles.aside}>
 			<SectionContainer
 				priority='aside'
-				subpage
 				isMainPage
 				title='Kalendarz'>
-				<CalendarSection />
+				<AsideCalendar />
 			</SectionContainer>
 			<SectionContainer
 				priority='aside'
-				subpage
 				isMainPage
 				title='Przydatne linki'>
 				<UsefulLinks />

@@ -5,6 +5,9 @@ import '@/styles/globals.css' // Globalne style aplikacji
 import { Provider } from 'react-redux'
 import { store } from '@/redux/store'
 import NextTopLoader from 'nextjs-toploader'
+import TanstackProvider from '@/components/providers/QueryProvider/tanstack-provider'
+import Footer from '@/components/Footer/Footer'
+import { SnackbarProvider } from 'notistack'
 
 const rubik = Rubik({
 	subsets: ['latin'],
@@ -23,13 +26,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			</head>
 			<Provider store={store}>
 				<body className={rubik.className}>
-					<NextTopLoader color='#c59b38;' 
-					height={3}
-					showSpinner={false}
-					
-					/>
-					<Navbar />
-					{children}
+					<SnackbarProvider maxSnack={1}>
+						<NextTopLoader
+							color='#c59b38;'
+							height={3}
+							// showSpinner={false}
+						/>
+						<Navbar />
+						<TanstackProvider>{children}</TanstackProvider>
+						<Footer />
+					</SnackbarProvider>
 				</body>
 			</Provider>
 		</html>

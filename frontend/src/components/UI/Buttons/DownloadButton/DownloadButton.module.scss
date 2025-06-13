@@ -1,0 +1,106 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+
+.download-button {
+	position: relative;
+	flex-direction: column;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 10px;
+	padding: 10px;
+	width: 100%;
+	min-height: 100px;
+	text-decoration: none;
+	border: 1px solid transparent;
+	box-shadow: c.$item-shadow;
+	color: c.$pure-black;
+	background-color: c.$card-background;
+	border-radius: s.$radius;
+	overflow: hidden;
+	cursor: pointer;
+	transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+	@media (min-width: 512px) {
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: row;
+		min-height: 80px;
+	}
+
+	&:hover,
+	&:active,
+	&:focus-visible {
+		background-color: c.$gray-light;
+	}
+
+	.info {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+		font-weight: 500;
+
+		.icon {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 5px;
+			border-radius: s.$radius;
+			background-color: c.$dark;
+
+			.ext {
+				font-size: 10px;
+				text-transform: uppercase;
+				font-weight: normal;
+				color: c.$card-background;
+			}
+		}
+
+		.name {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			.title {
+				display: -webkit-box;
+				max-width: 400px;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.season {
+				font-size: 10px;
+				font-weight: normal;
+				color: c.$gray;
+			}
+		}
+	}
+
+	.download {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-self: center;
+		align-items: center;
+		width: 120px;
+		text-align: center;
+		font-size: 12px;
+		color: c.$dark;
+
+		.icon {
+			font-size: 20px;
+		}
+
+		.size {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			font-size: 12px;
+			font-weight: normal;
+		}
+	}
+}

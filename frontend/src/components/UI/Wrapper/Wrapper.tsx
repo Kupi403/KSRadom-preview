@@ -1,8 +1,8 @@
-import { PropsWithChildren } from 'react'
-import './Wrapper.scss'
+import React from 'react'
+import styles from '@/styles/layout.module.scss'
 
-const Container: React.FC<PropsWithChildren> = ({ children }) => {
-	return <div className='wrapper'>{children}</div>
+const Wrapper = ({ children }: { children: React.ReactNode }) => {
+	return <div className={styles.wrapper}>{children}</div>
 }
 
-export default Container
+export default Wrapper

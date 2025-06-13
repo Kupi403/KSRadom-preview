@@ -1,14 +1,26 @@
-import SubPageHeader from '@/components/MainHeader/SubPageHeader'
-import React from 'react'
+import SubPageHeader from '@/components/Headers/SubPageHeader'
+
+import styles from '../styles/layout.module.scss'
+import SectionContainer from '@/components/UI/SectionContainer/SectionContainer'
+import CTAButton from '@/components/UI/Buttons/CTA/CTAButton'
 
 const NotFound = () => {
 	return (
 		<>
-			<SubPageHeader title='Nie znaleziono strony'/>
-			<main className='not-found'>
-				<h1>Not found</h1>
-				<p>There is no page here</p>
-			</main>
+			<SubPageHeader errorTitle='Nie znaleziono strony' />
+			<div className={styles.wrapper}>
+				<SectionContainer priority='subpage'>
+					<div className={styles['not-found']}>
+						<h1>Błąd 404</h1>
+						<p>Nie ma strony o podanym adresie</p>
+						<CTAButton
+							priority='error'
+							href='/'>
+							Powrót
+						</CTAButton>
+					</div>
+				</SectionContainer>
+			</div>
 		</>
 	)
 }
