@@ -1,4 +1,4 @@
-import { SeasonsType } from '@/hooks/useFetchSeasons'
+import { SeasonsType } from '@/hooks/ReactQuery/useFetchSeasons'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 

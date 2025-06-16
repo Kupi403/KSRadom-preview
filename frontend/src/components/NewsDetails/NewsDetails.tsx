@@ -1,26 +1,19 @@
 'use client'
 
-import { NewsType } from '@/types/PostType'
 import React from 'react'
 import Image from 'next/image'
-import useSetDate from '@/helpers/useSetDate'
-// import './NewsDetails.scss'
 import NewsDateAndCreatorInfo from '@/components/UI/NewsCard/NewsDateAndCreator/NewsCreationInfo'
-import { FaUser } from 'react-icons/fa'
-import { MdDateRange } from 'react-icons/md'
-
-import Link from 'next/link'
-import useFetchAdjacentPosts from '@/hooks/useFetchAdjacentPosts'
+import useFetchAdjacentPosts from '@/hooks/ReactQuery/useFetchAdjacentPosts'
 import NewsFiles from './Files/NewsFiles'
 import NewsMedia from './Media/NewsMedia'
 import AdjacentPosts from './AdjacentPosts/AdjacentPosts'
 import Description from './Description/Description'
-import Categories from './Categories/Categories'
+import Categories from './NewsCategories/NewsCategories'
 import { URL } from '@/constant/url'
-
 import styles from './NewsDetails.module.scss'
+import { NewsType } from '../News/types'
 
-const NewsDetails = ({ post }: { post: NewsType}) => {
+const NewsDetails = ({ post }: { post: NewsType }) => {
 	const { data: adjacentPosts, isLoading, isError } = useFetchAdjacentPosts(post.documentId)
 
 	return (

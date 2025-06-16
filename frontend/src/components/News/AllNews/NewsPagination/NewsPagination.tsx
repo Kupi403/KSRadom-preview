@@ -2,14 +2,7 @@ import styles from '../../News.module.scss'
 import { useRouter } from 'next/navigation'
 import LoadingButton from '@/components/UI/Buttons/Options/LoadingButton'
 import Chevron from '@/components/UI/Buttons/Chevron/Chevron'
-
-type NewsPaginationProps = {
-	totalPosts: number
-	postsPerPage: number
-	currentPage: number
-	setCurrentPage: (page: number) => void
-	loading: boolean
-}
+import { NewsPaginationProps } from '../../types'
 
 const NewsPagination = ({ totalPosts, postsPerPage, currentPage, setCurrentPage, loading }: NewsPaginationProps) => {
 	const router = useRouter()

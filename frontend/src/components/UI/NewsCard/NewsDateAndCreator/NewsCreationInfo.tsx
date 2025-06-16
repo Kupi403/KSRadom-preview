@@ -1,21 +1,21 @@
 import React from 'react'
 import { MdDateRange } from 'react-icons/md'
 import { FaUser } from 'react-icons/fa'
-import useSetDate from '@/helpers/useSetDate'
+import useSetDate from '@/lib/helpers/setDate'
 import styles from './NewsCreationInfo.module.scss'
+import { CREATOR_NAME } from '@/constant/error'
 
 type NewsCreationInfoPropsProps = {
-	publishedAt: string
+	publishedAt: string | null | undefined
 	createdBy?: {
 		firstname: string
 		lastname: string
 	}
 	newsDetails?: boolean
 }
-console.log(styles)
 const NewsCreationInfo = ({ publishedAt, createdBy }: NewsCreationInfoPropsProps) => {
 	const formatedDate = useSetDate(publishedAt)
-	const name = `${createdBy ? createdBy.firstname : 'KS'} ${createdBy ? createdBy.lastname[0] : 'Radom'}.`
+	const name = createdBy ? `${createdBy.firstname} ${createdBy.lastname[0]}.` : CREATOR_NAME
 
 	return (
 		<div className={styles['creation-info']}>

@@ -1,14 +1,15 @@
 import Link from 'next/dist/client/link'
 import React from 'react'
 import styles from '../NewsDetails.module.scss'
+import { CategoriesType } from '../../types'
 
-const Categories = ({ categories }: { categories: Array<{ name: string }> }) => {
+const NewsCategories = ({ categories }: { categories: CategoriesType[] }) => {
 	return (
 		<>
 			<div className={styles.categories}>
 				<p>Kategorie:</p>
 
-				{categories.map((category: { name: string }) => {
+				{categories.map(category => {
 					return (
 						<Link
 							key={category.name}
@@ -22,4 +23,4 @@ const Categories = ({ categories }: { categories: Array<{ name: string }> }) => 
 	)
 }
 
-export default Categories
+export default NewsCategories

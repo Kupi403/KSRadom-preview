@@ -140,8 +140,6 @@ const ContactForm = () => {
 			}),
 		}
 
-		console.log(emailData)
-
 		if (!areInputsValid()) {
 			firstNameBlurHandler()
 			lastNameBlurHandler()

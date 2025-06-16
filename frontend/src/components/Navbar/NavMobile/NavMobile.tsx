@@ -2,11 +2,15 @@ import Link from 'next/link'
 import { NavMobileItemProps } from '../types'
 import NavItem from '../NavItems/NavItem'
 import styles from './NavMobile.module.scss'
+import { useEffect } from 'react'
 
 const NavMobile: React.FC<NavMobileItemProps> = ({ items, isMobileMenuOpen, setIsMobileMenuOpen }) => {
+	useEffect(() => {
+		if (isMobileMenuOpen) {
+		}
+	}, [isMobileMenuOpen])
 	return (
 		<div className={`${styles['navbar-mobile']} ${isMobileMenuOpen ? styles.open : ''}`}>
-			{/* <div className={`navbar-mobile open`}> */}
 			<ul className={styles.menu}>
 				{items.map((link, index) => (
 					<li
@@ -15,7 +19,7 @@ const NavMobile: React.FC<NavMobileItemProps> = ({ items, isMobileMenuOpen, setI
 						<Link
 							href={link.address}
 							className={styles.link}
-							onClick={!link.subcategories ? () => setIsMobileMenuOpen(false) : undefined}>
+							onClick={() => setIsMobileMenuOpen(false)}>
 							{link.text}
 						</Link>
 						{link.subcategories && (
@@ -25,11 +29,11 @@ const NavMobile: React.FC<NavMobileItemProps> = ({ items, isMobileMenuOpen, setI
 										key={subIndex}
 										className={`${styles.item} ${styles.subitem}`}
 										onClick={() => setIsMobileMenuOpen(false)}>
-										<a
+										<Link
 											href={sub.isExternal ? '' : `${link.address}${sub.address}`}
 											className={`${styles.link} ${styles.sublink}`}>
 											{sub.text}
-										</a>
+										</Link>
 									</li>
 								))}
 							</ul>
@@ -38,16 +42,6 @@ const NavMobile: React.FC<NavMobileItemProps> = ({ items, isMobileMenuOpen, setI
 				))}
 			</ul>
 		</div>
-		// <nav className='navbar-mobile'>
-		// 	{items.map((item, index) => (
-		// 		<NavItem
-		// 			key={index}
-		// 			index={index}
-		// 			text={item.text}
-		// 			subcategories={item.subcategories}
-		// 		/>
-		// 	))}
-		// </nav>
 	)
 }
 

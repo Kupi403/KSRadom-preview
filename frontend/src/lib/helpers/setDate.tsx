@@ -1,4 +1,7 @@
-const useSetDate = (date: string) => {
+import { NO_INFO } from '@/constant/error'
+
+const setDate = (date: string | undefined | null) => {
+	if (!date) return NO_INFO
 	const newDate = new Date(date)
 	const formattedDate = `${newDate.toLocaleDateString('pl', {
 		year: 'numeric',
@@ -12,4 +15,4 @@ const useSetDate = (date: string) => {
 	return formattedDate
 }
 
-export default useSetDate
+export default setDate

@@ -1,6 +1,6 @@
 'use client'
 
-import useFetchCourseInfo from '@/hooks/useFetchCourseInfo'
+import useFetchCourseInfo from '@/hooks/ReactQuery/useFetchCourseInfo'
 import Description from '../News/NewsDetails/Description/Description'
 import styles from './CourseInfo.module.scss'
 import LoadingSubpage from '../UI/Loading/LoadingSubpage'

@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
-import { AdjacentPostType } from './AdjacentPosts'
-import useSetDate from '@/helpers/useSetDate'
+import useSetDate from '@/lib/helpers/setDate'
 import { MdDateRange } from 'react-icons/md'
 import styles from '../NewsDetails.module.scss'
 import { URL } from '@/constant/url'
+import { AdjacentPostType } from '../../types'
 
 const AdjacentCard = ({ data }: { data: AdjacentPostType }) => {
 	const date = useSetDate(data.createdAt)

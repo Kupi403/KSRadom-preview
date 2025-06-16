@@ -11,6 +11,7 @@ import { useEffect } from 'react'
 import { NO_INFO } from '@/constant/error'
 import EventSubtitle from './EventSubtitle'
 import { MdPlace } from 'react-icons/md'
+import { URL } from '@/constant/url'
 
 const EventModal = () => {
 	const dispatch = useDispatch()
@@ -39,7 +40,7 @@ const EventModal = () => {
 				onClick={e => e.stopPropagation()}>
 				<div className={styles.image}>
 					<Image
-						src={event ? `http://localhost:1337${event.place.image.url}` : 'https://picsum.photos/1920/1080'}
+						src={event ? `${URL}${event.place.image.url}` : 'https://picsum.photos/1920/1080'}
 						alt={event ? event.place.name : NO_INFO}
 						fill
 						objectFit='cover'

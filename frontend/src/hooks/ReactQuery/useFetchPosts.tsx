@@ -2,8 +2,10 @@
 
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import { API_URL } from '@/constant/url'
-import { NewsResponse, NewsThumbnail, NewsThumbnailResponse } from '@/types/PostType'
+
 import { extractTextFromBlocks } from '@/components/News/util'
+import { NewsResponse, NewsType } from '@/components/News/types'
+// import { NewsType } from '@/types/newsType'
 
 type FetchOptionsType = {
 	order?: 'desc' | 'asc'
@@ -17,7 +19,7 @@ const fetchPosts = async ({
 	currentPage = 1,
 	postsPerPage = 5,
 	category,
-}: FetchOptionsType): Promise<NewsThumbnailResponse> => {
+}: FetchOptionsType): Promise<NewsResponse> => {
 	let query = `/posts?sort[0]=publishedAt:${order}
     &fields[0]=title
     &fields[1]=description
@@ -44,9 +46,7 @@ const fetchPosts = async ({
 
 	const { data, meta }: NewsResponse = await res.json()
 
-	const postData: NewsThumbnail[] = data.map(news => {
-
-
+	const postData: NewsType[] = data.map(news => {
 		const shortDescription = extractTextFromBlocks(news.newDescription).substring(0, 150) || news.title
 
 		return {
@@ -57,6 +57,8 @@ const fetchPosts = async ({
 			documentId: news.documentId,
 			title: news.title,
 			createdAt: news.createdAt,
+			publishedAt: news.publishedAt,
+			newDescription: news.newDescription,
 			id: news.id,
 		}
 	})

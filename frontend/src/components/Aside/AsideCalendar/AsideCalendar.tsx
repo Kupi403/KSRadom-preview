@@ -4,9 +4,9 @@ import React from 'react'
 import styles from './AsideCalendar.module.scss'
 import CalendarCard from '@/components/Calendar/CalendarCard/CalendarCard'
 import CTAButton from '@/components/UI/Buttons/CTA/CTAButton'
-import useFetchEvents from '@/hooks/useFetchEvents'
+import useFetchEvents from '@/hooks/ReactQuery/useFetchEvents'
 import LoadingCalendarCard from '@/components/Calendar/CalendarCard/LoadingCalendarCard'
-import generateComponents from '@/helpers/generateComponents'
+import generateComponents from '@/lib/helpers/generateComponents'
 import NoData from '@/components/UI/States/DataState'
 
 const AsideCalendar = () => {

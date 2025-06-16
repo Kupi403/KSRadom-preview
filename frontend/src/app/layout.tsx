@@ -1,7 +1,7 @@
 'use client'
 import { Rubik } from 'next/font/google'
 import Navbar from '@/components/Navbar/Nav'
-import '@/styles/globals.css' // Globalne style aplikacji
+import '@/styles/globals.css'
 import { Provider } from 'react-redux'
 import { store } from '@/redux/store'
 import NextTopLoader from 'nextjs-toploader'
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<NextTopLoader
 							color='#c59b38;'
 							height={3}
-							// showSpinner={false}
+							showSpinner={false}
 						/>
 						<Navbar />
 						<TanstackProvider>{children}</TanstackProvider>

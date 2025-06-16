@@ -1,5 +1,5 @@
 import NewsList from '../NewsList'
-import { useFetchMainPageNews } from '@/hooks/useFetchPosts'
+import { useFetchMainPageNews } from '@/hooks/ReactQuery/useFetchPosts'
 
 const MainNews = () => {
 	const {

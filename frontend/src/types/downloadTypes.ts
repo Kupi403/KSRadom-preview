@@ -1,5 +1,5 @@
 import { FileType } from '@/types/PostType'
-import { SeasonsType } from '@/hooks/useFetchSeasons'
+import { SeasonsType } from '@/hooks/ReactQuery/useFetchSeasons'
 
 export type DownloadCategoryType = {
 	description?: string

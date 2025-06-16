@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import { FaDownload } from 'react-icons/fa'
 import { FileType } from '@/types/PostType'
-import { SeasonsType } from '@/hooks/useFetchSeasons'
+import { SeasonsType } from '@/hooks/ReactQuery/useFetchSeasons'
 
 type DownloadButtonProps = {
 	file: FileType

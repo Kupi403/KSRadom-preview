@@ -4,8 +4,8 @@ import styles from './SubPageHeader.module.scss'
 import obsadaHero from '@/assets/images/obsada-category.jpg'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import useFetchCategories from '@/hooks/useFetchCategories'
-import { useFindHeaderTitle } from '@/helpers/findHeaderTitle'
+import useFetchCategories from '@/hooks/ReactQuery/useFetchCategories'
+import { useFindHeaderTitle } from '@/lib/helpers/findHeaderTitle'
 import { SubPageHeaderProps } from './types'
 
 const SubPageHeader = ({ errorTitle }: SubPageHeaderProps) => {

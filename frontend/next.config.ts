@@ -9,19 +9,19 @@ const nextConfig: NextConfig = {
 		ignoreBuildErrors: true, // Pomiń błędy typów podczas procesu build
 	},
 	images: {
-		domains: ['localhost', '69.62.113.55'],
+		domains: ['localhost', '93.127.186.161'],
 		remotePatterns: [
 			{
 				protocol: 'https',
 				hostname: 'picsum.photos',
 			},
 			{
-				hostname: '69.62.113.55',
+				hostname: '93.127.186.161',
 				port: '3000', // Jeśli używasz Strapi na porcie 1337
 				pathname: '/uploads/**',
 			},
 			{
-				hostname: '69.62.113.55',
+				hostname: '93.127.186.161',
 				port: '1337', // Jeśli używasz Strapi na porcie 1337
 				pathname: '/uploads/**',
 			},
@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
 				pathname: '/uploads/**',
 			},
 			{
-				hostname: '69.62.113.55',
+				hostname: '93.127.186.161',
 				port: '3000', // Jeśli używasz Strapi na porcie 1337
 				pathname: '/_next/**',
 			},

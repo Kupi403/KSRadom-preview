@@ -1,7 +1,7 @@
 import DownloadItems from '@/components/SubpageManager/DownloadItems/DownloadItems'
 import LoadingSubpage from '@/components/UI/Loading/LoadingSubpage'
 import SectionContainer from '@/components/UI/SectionContainer/SectionContainer'
-import useFindHeaderTitle from '@/helpers/findHeaderTitle'
+import useFindHeaderTitle from '@/lib/helpers/findHeaderTitle'
 import React, { Suspense, use } from 'react'
 interface PostPageProps {
 	params: { subpage: string }

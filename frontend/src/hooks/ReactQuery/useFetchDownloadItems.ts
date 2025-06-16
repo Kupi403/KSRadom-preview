@@ -15,7 +15,6 @@ const fetchDownloadItems = async (subpage: string | undefined, season?: string):
 			? `${baseFetchURL}&filters[download_categories][name][$eq]=${encodeURIComponent(subpage)}`
 			: baseFetchURL
 
-		console.log(fetchURL)
 
 		const response = await fetch(fetchURL)
 

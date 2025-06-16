@@ -6,33 +6,11 @@ import NewsList from '../NewsList'
 import NewsPagination from './NewsPagination/NewsPagination'
 import styles from './AllNews.module.scss'
 import Options, { OptionsType } from '../../UI/Buttons/Options/Options'
-import { useFetchAllNews } from '@/hooks/useFetchPosts'
+import { useFetchAllNews } from '@/hooks/ReactQuery/useFetchPosts'
 import ErrorComponent from '@/components/UI/States/Error'
-import useFetchNewsCategories from '@/hooks/useFetchNewsCategories'
-
-export type CategoriesType = {
-	name: string
-	path: string
-}
-
-export type CategoriesResponseType = {
-	data: CategoriesType[]
-	meta: {
-		pagination: {
-			page: number
-			pageSize: number
-			pageCount: number
-			total: number
-		}
-	}
-}
-
-export type SortType = 'desc' | 'asc'
-
-export const SORT_OPTIONS: OptionsType<'asc' | 'desc'>[] = [
-	{ value: 'desc', caption: 'Od najnowszych', default: true },
-	{ value: 'asc', caption: 'Od najstarszych' },
-]
+import useFetchNewsCategories from '@/hooks/ReactQuery/useFetchNewsCategories'
+import { SortType } from '../types'
+import { SORT_OPTIONS } from '../const'
 
 export const POSTS_PER_PAGE = 9
 
@@ -48,8 +26,6 @@ const AllNews = () => {
 			  }))
 			: []),
 	]
-
-	console.log(categoriesOptions)
 
 	const searchParams = useSearchParams()
 	const router = useRouter()

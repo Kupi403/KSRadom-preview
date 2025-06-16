@@ -1,17 +1,50 @@
-export const extractTextFromBlocks = (blocks: any[]): string => {
-	if (!blocks || !Array.isArray(blocks)) return ''
+type TextInlineNode = {
+	type: 'text'
+	text: string
+	bold?: boolean
+	italic?: boolean
+	underline?: boolean
+	code?: boolean
+	strikethrough?: boolean
+}
 
-	const texts: string[] = []
+type LinkInlineNode = {
+	type: 'link'
+	url: string
+	children: InlineNode[]
+}
 
-	for (const block of blocks) {
-		if (Array.isArray(block.children)) {
-			for (const child of block.children) {
-				if (typeof child === 'object' && typeof child.text === 'string') {
-					texts.push(child.text)
+type InlineNode = TextInlineNode | LinkInlineNode // możesz dodać więcej
+
+type BlockNode = {
+	type: string
+	children: InlineNode[]
+}
+
+export type BlocksContentFixed = BlockNode[]
+export const extractTextFromBlocks = (blocks: BlocksContentFixed): string => {
+	if (!Array.isArray(blocks)) return ''
+
+	const description: string[] = []
+
+	const extractText = (nodes: any[]) => {
+		for (const node of nodes) {
+			if (typeof node === 'object') {
+				if ('text' in node && typeof node.text === 'string') {
+					description.push(node.text)
+				}
+				if ('children' in node && Array.isArray(node.children)) {
+					extractText(node.children) // rekurencja dla np. linków
 				}
 			}
 		}
 	}
 
-	return texts.join(' ')
+	for (const block of blocks) {
+		if (Array.isArray(block.children)) {
+			extractText(block.children)
+		}
+	}
+
+	return description.join(' ').trim()
 }

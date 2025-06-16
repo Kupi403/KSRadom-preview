@@ -70,7 +70,6 @@ const Navbar = () => {
 				<span className={`${styles.circle} ${isLogoActive ? styles.active : ''}`}></span>
 			</div>
 
-
 			<div className={styles.burger}>
 				<Hamburger
 					size={36}

@@ -1,3 +1,5 @@
+import { CategoriesType } from '@/components/News/types'
+
 export type NewsType = {
 	title: string
 	// text: { type: string; children: { text: string }[] }[]
@@ -7,7 +9,7 @@ export type NewsType = {
 	updatedAt: string
 	dateToPublish: string | null
 	id: number
-	category: string
+	category: CategoriesType
 	createdBy: {
 		firstname: string
 		lastname: string

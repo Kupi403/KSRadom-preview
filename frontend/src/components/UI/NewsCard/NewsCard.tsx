@@ -1,10 +1,11 @@
 import styles from './NewsCard.module.scss'
 import Link from 'next/link'
 import NewsDateAndCreatorInfo from './NewsDateAndCreator/NewsCreationInfo'
-import { NewsType } from '@/types/PostType'
 import Image from 'next/image'
 import { URL } from '@/constant/url'
-type NewsCardProps = {
+import { IMAGE_NOT_FOUND } from '@/constant/error'
+import { NewsType } from '@/components/News/types'
+export type NewsCardProps = {
 	news: NewsType
 	subpage?: boolean
 }
@@ -18,10 +19,10 @@ const NewsCard = ({ news, subpage }: NewsCardProps) => {
 			scroll>
 			<div className={styles.image}>
 				<Image
-					src={`${URL}${news.thumbnail && news.thumbnail.formats.small.url}`}
+					src={news.thumbnail ? `${URL}${news.thumbnail.formats.small.url}` : IMAGE_NOT_FOUND}
 					fill
 					sizes='(max-width: 768px) 100vw, 50vw'
-					alt={`${news.thumbnail.alternativeText ? news.thumbnail.alternativeText : 'Zdjecie'}`}
+					alt={`${news.thumbnail.alternativeText ? news.thumbnail.alternativeText : 'Zdjęcie miniaturka dla postu'}`}
 				/>
 				<span className={styles.tag}>{news.categories[0] ? news.categories[0].name : 'Aktualności'}</span>
 			</div>

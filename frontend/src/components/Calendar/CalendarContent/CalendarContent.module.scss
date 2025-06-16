@@ -119,7 +119,7 @@
 				background-color: c.$light-red;
 				box-shadow: 0 0 5px c.$light-red;
 				border-radius: 50%;
-				animation: blink 5s ease-in-out infinite;
+				@include m.blink();
 			}
 			&:hover {
 				background: c.$section-background;

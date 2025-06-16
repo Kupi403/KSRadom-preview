@@ -4,12 +4,11 @@ import { MediaType } from '@/types/PostType'
 import React, { useEffect } from 'react'
 import Image from 'next/image'
 import GLightbox from 'glightbox'
-import Link from 'next/link'
 import 'glightbox/dist/css/glightbox.min.css'
 import { URL } from '@/constant/url'
 import styles from '../NewsDetails.module.scss'
 
-const NewsMedia = ({ media }: { media: MediaType }) => {
+const NewsMedia = ({ media }: { media: MediaType[] }) => {
 	useEffect(() => {
 		const lightbox = GLightbox({ loop: true, dragToleranceX: 300, zoomable: false })
 		return () => lightbox.destroy()
@@ -25,7 +24,7 @@ const NewsMedia = ({ media }: { media: MediaType }) => {
 					const mediaSrc = item.formats?.small?.url
 						? `${URL}${item.formats.small.url}`
 						: 'https://picsum.photos/200/300'
-					
+
 					return (
 						<a
 							key={index}

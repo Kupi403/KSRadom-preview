@@ -1,4 +1,4 @@
-import generateComponents from '@/helpers/generateComponents'
+import generateComponents from '@/lib/helpers/generateComponents'
 import styles from './CalendarCard.module.scss'
 
 const Skeleton = ({ className }: { className: string }) => <div className={`${styles.skeleton} ${className}`} />
