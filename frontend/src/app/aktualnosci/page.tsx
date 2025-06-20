@@ -1,27 +1,9 @@
-// import { Suspense } from 'react'
-// import AllNews from '@/components/News/AllNews/AllNews'
-// import LoadingSubpage from '@/components/UI/Loading/LoadingSubpage'
-// import SectionContainer from '@/components/UI/SectionContainer/SectionContainer'
-
-// export default function AllNewsPage() {
-// 	return (
-// 		<SectionContainer
-// 			title='Aktualności'
-// 			priority='aside'
-// 			isMainPage>
-// 			<Suspense fallback={<LoadingSubpage />}>
-// 				<AllNews />
-// 			</Suspense>
-// 		</SectionContainer>
-// 	)
-// }
 import { fetchNews } from '@/lib/fetch/fetchNews'
 import AllNews from '@/components/News/AllNews/AllNews'
 import SectionContainer from '@/components/UI/SectionContainer/SectionContainer'
 import { POSTS_PER_PAGE } from '@/components/News/AllNews/const'
 import { Suspense } from 'react'
 import LoadingSubpage from '@/components/UI/Loading/LoadingSubpage'
-// import { Suspense } from 'react'
 
 export const metadata = {
 	title: 'Aktualności | Komisja Sędziowska Radom',
