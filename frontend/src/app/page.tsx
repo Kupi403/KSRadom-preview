@@ -1,17 +1,17 @@
-'use client'
 import '@/styles/globals.css'
 import MainHeader from '@/components/Headers/MainHeader'
 import styles from '../styles/layout.module.scss'
 import SectionContainer from '@/components/UI/SectionContainer/SectionContainer'
 import Aside from '@/components/Aside/Aside'
 import MainNews from '@/components/News/MainNews/MainNews'
+import Wrapper from '@/components/UI/Wrapper/Wrapper'
 
 export default function RootLayout() {
 	return (
 		<>
 			<MainHeader />
 
-			<div className={styles.wrapper}>
+			<Wrapper>
 				<main
 					className={styles.main}
 					style={{ zIndex: 0 }}>
@@ -24,7 +24,7 @@ export default function RootLayout() {
 
 					<Aside />
 				</main>
-			</div>
+			</Wrapper>
 		</>
 	)
 }

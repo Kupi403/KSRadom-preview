@@ -4,7 +4,7 @@ import SearchInput from '../UI/Search/SearchInput'
 import styles from './FAQ.module.scss'
 import { FAQ_QUESTIONS } from './const'
 import AccordionItem from '../UI/AccordionItem/AccordionItem'
-import useDebouncedValue from '../UI/Search/util/useDebouncedValue'
+import useDebouncedValue from '../UI/Search/utils'
 
 const FAQ = () => {
 	const [searchTerm, setSearchTerm] = useState('')

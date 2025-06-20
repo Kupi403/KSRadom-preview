@@ -1,25 +1,14 @@
-import { PropsWithChildren } from 'react'
+import styles from './SectionContainer.module.scss'
+import { SectionContainerProps } from './types'
 
-import { SectionContainerProps } from '@/types/propsTypes'
-import './SectionContainer.scss'
-
-const SectionContainer: React.FC<PropsWithChildren<SectionContainerProps>> = ({
-	priority,
-	isMainPage,
-	title,
-	children,
-	subpage,
-}) => {
-	let containerClass = `section-container__${priority ?? 'main'}`
-
-	if (isMainPage) containerClass += ' background'
-
-	if (subpage) containerClass += ' subpage'
-
+const SectionContainer = ({ priority, isMainPage, title, children, subpage }: SectionContainerProps) => {
+	const containerClass = `${styles['section-container']} ${priority && styles[priority]} ${subpage && styles.subpage} ${
+		isMainPage && styles.background
+	}`
 	return (
-		<section className={`section-container ${containerClass}`}>
-			{title && <h2 className={`${isMainPage ? 'section-container__title' : ''}`}>{title}</h2>}
-			<div className='section-container__body'>{children}</div>
+		<section className={containerClass}>
+			{title && <h2 className={`${isMainPage ? styles.title : ''}`}>{title}</h2>}
+			<div className={styles.body}>{children}</div>
 		</section>
 	)
 }

@@ -1,18 +1,8 @@
 import styles from '../Options.module.scss'
 import LoadingButton from '../LoadingButton'
-import { useState } from 'react'
-import { EventTimeType } from '@/components/Calendar/CalendarSidebar'
+import { OptionsButtonProps } from './types'
 
-type OptionProps = {
-	value: EventTimeType
-	title: string
-	isActive: boolean
-	setActiveEvents: (type: EventTimeType) => void
-	isShown?: boolean
-	loading: boolean
-}
-
-const Button = ({ title, value, isActive, isShown, setActiveEvents, loading }: OptionProps) => {
+const Button = ({ title, value, isActive, isShown, setActiveEvents, loading }: OptionsButtonProps) => {
 	if (loading) return <LoadingButton />
 	return (
 		<button

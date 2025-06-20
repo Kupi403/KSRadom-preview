@@ -4,16 +4,9 @@ import styles from './States.module.scss'
 import { IoMdRefresh } from 'react-icons/io'
 import errorIllustration from '@/../public/error.svg'
 import Image from 'next/image'
+import { ErrorStateProps } from './types'
 
-const ErrorComponent = ({
-	error,
-	description,
-	refetchFn,
-}: {
-	error: Error
-	description: string
-	refetchFn: () => void
-}) => {
+const ErrorComponent = ({ description, refetchFn }: ErrorStateProps) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.illustration}>

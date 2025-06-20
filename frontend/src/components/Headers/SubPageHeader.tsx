@@ -4,8 +4,8 @@ import styles from './SubPageHeader.module.scss'
 import obsadaHero from '@/assets/images/obsada-category.jpg'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import useFetchCategories from '@/hooks/ReactQuery/useFetchCategories'
-import { useFindHeaderTitle } from './utils'
+import useFetchCategories from '@/hooks/ReactQuery/useFetchSubpageCategories'
+import { findHeaderTitle } from './utils'
 import { SubPageHeaderProps } from './types'
 
 const SubPageHeader = ({ errorTitle }: SubPageHeaderProps) => {
@@ -17,7 +17,7 @@ const SubPageHeader = ({ errorTitle }: SubPageHeaderProps) => {
 	const heroRef = useRef<HTMLDivElement>(null)
 
 	const { data: categories } = useFetchCategories(documentId ?? null)
-	const img = documentId ? categories?.image : useFindHeaderTitle(lastParam)?.image
+	const img = documentId ? categories?.image : findHeaderTitle(lastParam)?.image
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -35,7 +35,7 @@ const SubPageHeader = ({ errorTitle }: SubPageHeaderProps) => {
 	}, [])
 
 	const generateBreadcrumbs = () => {
-		const headerElements = [...params].map(segment => useFindHeaderTitle(segment))
+		const headerElements = [...params].map(segment => findHeaderTitle(segment))
 
 		const lastElement = headerElements.pop()
 

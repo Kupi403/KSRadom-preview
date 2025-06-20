@@ -1,4 +1,4 @@
-import { MdPlace, MdMail, MdAccountBalance, MdContentCopy } from 'react-icons/md'
+import { MdPlace, MdAccountBalance, MdContentCopy } from 'react-icons/md'
 
 export const STAFF_MEMBERS = [
 	{ name: 'Daniel', surname: 'Maciejewski', phone: '608 490 122', role: 'Przewodniczący Komisji Sędziowskiej' },

@@ -9,7 +9,7 @@ export type SubpageCategoriesType = {
 	image: string
 }
 
-const fetchCategories = async (documentId: string | null | undefined): Promise<SubpageCategoriesType | null> => {
+const fetchSubpageCategories = async (documentId: string | null | undefined): Promise<SubpageCategoriesType | null> => {
 	if (!documentId) return null
 	try {
 		const response = await fetch(`${API_URL}/posts/${documentId}?populate=categories&populate=thumbnail`)
@@ -29,10 +29,10 @@ const fetchCategories = async (documentId: string | null | undefined): Promise<S
 	}
 }
 
-const useFetchCategories = (documentId: string | null): UseQueryResult<SubpageCategoriesType, Error> => {
+const useFetchSubpageCategories = (documentId: string | null): UseQueryResult<SubpageCategoriesType, Error> => {
 	return useQuery({
 		queryKey: ['category', documentId],
-		queryFn: () => fetchCategories(documentId!),
+		queryFn: () => fetchSubpageCategories(documentId!),
 		staleTime: 1000 * 60 * 5,
 		retry: 1,
 		enabled: !!documentId,
@@ -41,4 +41,4 @@ const useFetchCategories = (documentId: string | null): UseQueryResult<SubpageCa
 	})
 }
 
-export default useFetchCategories
+export default useFetchSubpageCategories

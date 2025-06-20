@@ -1,18 +1,10 @@
-import React from 'react'
 import { MdDateRange } from 'react-icons/md'
 import { FaUser } from 'react-icons/fa'
 import useSetDate from '@/lib/helpers/setDate'
 import styles from './NewsCreationInfo.module.scss'
-import { CREATOR_NAME } from '@/constant/error'
+import { CREATOR_NAME } from '@/constant/fallback'
+import { NewsCreationInfoPropsProps } from './types'
 
-type NewsCreationInfoPropsProps = {
-	publishedAt: string | null | undefined
-	createdBy?: {
-		firstname: string
-		lastname: string
-	}
-	newsDetails?: boolean
-}
 const NewsCreationInfo = ({ publishedAt, createdBy }: NewsCreationInfoPropsProps) => {
 	const formatedDate = publishedAt ? useSetDate(publishedAt) : useSetDate(new Date().toISOString())
 	const name = createdBy ? `${createdBy.firstname} ${createdBy.lastname[0]}.` : CREATOR_NAME

@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import LoadingSubpage from '@/components/UI/Loading/LoadingSubpage'
 import SectionContainer from '@/components/UI/SectionContainer/SectionContainer'
-import PageInProgress from '@/components/UI/States/PageInProgress'
+import Contact from '@/components/Contact/Contact'
 
 const page = () => {
 	return (
@@ -10,7 +10,7 @@ const page = () => {
 			priority='aside'
 			isMainPage>
 			<Suspense fallback={<LoadingSubpage />}>
-				<PageInProgress />
+				<Contact />
 			</Suspense>
 		</SectionContainer>
 	)

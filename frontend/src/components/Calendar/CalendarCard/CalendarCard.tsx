@@ -3,7 +3,7 @@ import { MdPlace } from 'react-icons/md'
 import { FiAlignLeft } from 'react-icons/fi'
 import CalendarSubtitle from './CalendarSubtitle'
 import styles from './CalendarCard.module.scss'
-import { NO_INFO } from '@/constant/error'
+import { NO_INFO } from '@/constant/fallback'
 import { CalendarCardProps } from './types'
 import { getFormattedEventDate } from '../utils'
 

@@ -1,8 +1,9 @@
 import React from 'react'
 import { FaChevronRight } from 'react-icons/fa'
 import styles from './Chevron.module.scss'
+import { ChevronProps } from './types'
 
-const Chevron = ({ orientation = 'right' }: { orientation: 'up' | 'down' | 'left' | 'right' }) => {
+const Chevron = ({ orientation = 'right' }: ChevronProps) => {
 	return <FaChevronRight className={`${styles.button} ${styles[orientation]}`} />
 }
 

@@ -23,7 +23,7 @@
 	display: flex;
 	flex-direction: column;
 	background-color: c.$section-background;
-	padding: 1em;
+	padding: 15px;
 	border-radius: s.$radius;
 	box-shadow: c.$item-shadow;
 	width: 100%;
@@ -33,24 +33,34 @@
 		width: 50%;
 	}
 
-	&__aside {
+	&.aside {
 		width: 100%;
 		z-index: 1;
 	}
 
-	&__subpage {
-		margin: 1em 0;
+	&.subpage {
+		margin: 15px 0;
 		width: 100%;
 		z-index: 0;
 		@media (min-width: 1200px) {
 			display: flex;
 		}
+
+		@media (min-width: 768px) {
+			width: 100%;
+		}
 	}
 
-	&__title {
+	&.main {
+		@media (min-width: 1200px) {
+			width: 60%;
+		}
+	}
+
+	.title {
 		display: flex;
-		margin: 0.5em 0 1em 0;
-		padding: 0 0.3em;
+		margin: 8px 0 15px 0;
+		padding: 0 5px;
 		font-size: s.$font-large;
 		color: c.$gold;
 		background-color: c.$gold;
@@ -64,7 +74,7 @@
 			position: absolute;
 			bottom: -10%;
 			left: 0;
-			margin-left: 0.3em;
+			margin-left: 5px;
 			width: 50%;
 			max-width: 100px;
 			height: 4px;
@@ -73,33 +83,14 @@
 			background: linear-gradient(270deg, c.$light-gold-transparent 0%, c.$gold 100%);
 		}
 
-		&__body {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			flex: 1;
-		}
-
 		@media (min-width: 768px) {
 			font-size: s.$font-xlarge;
 		}
 	}
-}
-
-@media (min-width: 768px) {
-	.section-container {
-
-		&__subpage {
-			width: 100%;
-		}
-
-	}
-}
-
-@media (min-width: 1200px) {
-	.section-container {
-		&__main {
-			width: 60%;
-		}
+	.body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		flex: 1;
 	}
 }

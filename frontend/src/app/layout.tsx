@@ -1,13 +1,6 @@
-'use client'
-import { Rubik } from 'next/font/google'
-import Navbar from '@/components/Navbar/Nav'
 import '@/styles/globals.css'
-import { Provider } from 'react-redux'
-import { store } from '@/redux/store'
-import NextTopLoader from 'nextjs-toploader'
-import TanstackProvider from '@/components/providers/QueryProvider/tanstack-provider'
-import Footer from '@/components/Footer/Footer'
-import { SnackbarProvider } from 'notistack'
+import { Rubik } from 'next/font/google'
+import ClientProviders from '@/services/ClientProvider'
 
 const rubik = Rubik({
 	subsets: ['latin'],
@@ -24,20 +17,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					content='Opis strony głównej aplikacji Next.js'
 				/>
 			</head>
-			<Provider store={store}>
-				<body className={rubik.className}>
-					<SnackbarProvider maxSnack={1}>
-						<NextTopLoader
-							color='#c59b38;'
-							height={3}
-							showSpinner={false}
-						/>
-						<Navbar />
-						<TanstackProvider>{children}</TanstackProvider>
-						<Footer />
-					</SnackbarProvider>
-				</body>
-			</Provider>
+			<body className={rubik.className}>
+				<ClientProviders>{children}</ClientProviders>
+			</body>
 		</html>
 	)
 }

@@ -2,14 +2,9 @@ import React from 'react'
 import styles from './SearchInput.module.scss'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { MdOutlineClear } from 'react-icons/md'
-type Props = {
-	value: string
-	onChange: (val: string) => void
-	placeholder?: string
-	isLoading?: boolean
-}
+import { SearchInputProps } from './types'
 
-const SearchInput = ({ value, onChange, placeholder, isLoading }: Props) => {
+const SearchInput = ({ value, onChange, placeholder, isLoading }: SearchInputProps) => {
 	if (isLoading) return <div className={styles.loading}></div>
 
 	return (
@@ -23,7 +18,7 @@ const SearchInput = ({ value, onChange, placeholder, isLoading }: Props) => {
 				aria-label={placeholder || 'Wyszukaj'}
 				className={styles.input}
 				value={value}
-				placeholder={placeholder || 'Wyszukaj sędziego lub miasto'}
+				placeholder={placeholder || 'Wyszukaj'}
 				onChange={e => onChange(e.target.value)}
 			/>
 

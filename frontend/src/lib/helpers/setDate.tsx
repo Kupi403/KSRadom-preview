@@ -1,4 +1,4 @@
-import { NO_INFO } from '@/constant/error'
+import { NO_INFO } from '@/constant/fallback'
 
 const setDate = (date: string | undefined | null) => {
 	if (!date) return NO_INFO

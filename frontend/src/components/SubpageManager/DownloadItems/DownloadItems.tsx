@@ -11,9 +11,9 @@ import useFetchSeasons from '@/hooks/ReactQuery/useFetchSeasons'
 import ErrorComponent from '@/components/UI/States/Error'
 import handleSeasonOptions from './util'
 import DataState from '@/components/UI/States/DataState'
-import { DownloadItem } from '@/types/downloadTypes'
+import { DownloadItem, DownloadItemsProps } from './types'
 
-const DownloadItems = ({ category, showSeason }: { category: string | undefined; showSeason?: boolean }) => {
+const DownloadItems = ({ category, showSeason }: DownloadItemsProps) => {
 	const { data: seasons, isLoading: isLoadingSeasons } = useFetchSeasons()
 
 	const { handleSeasonClick, selectedSeason, seasonsOptions } = handleSeasonOptions(seasons)

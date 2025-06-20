@@ -1,5 +1,4 @@
 'use client'
-
 import { useState, useEffect } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import NewsList from '../NewsList'
@@ -11,21 +10,14 @@ import useFetchNewsCategories from '@/hooks/ReactQuery/useFetchNewsCategories'
 import { SortType } from '../types'
 import { SORT_OPTIONS } from '../const'
 import useFetchNews from '@/hooks/ReactQuery/useFetchNews'
+import { generateCategoryOptions } from './utils'
+import { AllNewsProps } from './types'
+import { POSTS_PER_PAGE } from './const'
 
-export const POSTS_PER_PAGE = 9
-
-const AllNews = () => {
+const AllNews = ({ initialData }: AllNewsProps) => {
 	const { data: categories } = useFetchNewsCategories()
 
-	const categoriesOptions = [
-		{ value: '', caption: 'Wszystkie', default: true },
-		...(categories
-			? categories.map(category => ({
-					value: category.name,
-					caption: category.name.charAt(0).toUpperCase() + category.name.slice(1),
-			  }))
-			: []),
-	]
+	const categoriesOptions = generateCategoryOptions(categories)
 
 	const searchParams = useSearchParams()
 	const router = useRouter()
@@ -49,13 +41,16 @@ const AllNews = () => {
 		error,
 		isFetching,
 		refetch,
-	} = useFetchNews({
-		order,
-		currentPage,
-		postsPerPage: POSTS_PER_PAGE,
-		pagination: true,
-		category: selectedCategory,
-	})
+	} = useFetchNews(
+		{
+			order,
+			currentPage,
+			postsPerPage: POSTS_PER_PAGE,
+			pagination: true,
+			category: selectedCategory,
+		},
+		initialData
+	)
 	const totalPosts = news?.meta?.pagination?.total ?? 0
 
 	useEffect(() => {

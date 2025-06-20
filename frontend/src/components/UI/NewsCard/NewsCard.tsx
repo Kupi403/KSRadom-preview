@@ -3,15 +3,11 @@ import Link from 'next/link'
 import NewsDateAndCreatorInfo from './NewsDateAndCreator/NewsCreationInfo'
 import Image from 'next/image'
 import { URL } from '@/constant/url'
-import { IMAGE_NOT_FOUND } from '@/constant/error'
-import { NewsType } from '@/components/News/types'
-export type NewsCardProps = {
-	news: NewsType
-	subpage?: boolean
-}
+import { IMAGE_NOT_FOUND } from '@/constant/fallback'
+import { NewsCardProps } from './types'
 
 const NewsCard = ({ news, subpage }: NewsCardProps) => {
-	const thumbnailImage = news.thumbnail ? `${URL}${news.thumbnail.formats.small.url}` : IMAGE_NOT_FOUND
+	const thumbnailImage = news.thumbnail.formats.small ? `${URL}${news.thumbnail.formats.small.url}` : IMAGE_NOT_FOUND
 
 	const altText = `${news.thumbnail.alternativeText ? news.thumbnail.alternativeText : 'Zdjęcie miniaturka dla postu'}`
 

@@ -71,24 +71,29 @@ const NewsPagination = ({ totalPosts, postsPerPage, currentPage, setCurrentPage,
 		return pages
 	}
 
-	{
-		loading && <LoadingButton />
-	}
 	return (
 		<div className={styles.pagination}>
-			<button
-				className={styles.pageButton}
-				onClick={() => handlePageChange(currentPage - 1)}
-				disabled={currentPage === 1}>
-				<Chevron orientation='left' />
-			</button>
+			{loading ? (
+				<LoadingButton />
+			) : (
+				<button
+					className={styles.pageButton}
+					onClick={() => handlePageChange(currentPage - 1)}
+					disabled={currentPage === 1}>
+					<Chevron orientation='left' />
+				</button>
+			)}
 			{renderPages()}
-			<button
-				className={styles.pageButton}
-				onClick={() => handlePageChange(currentPage + 1)}
-				disabled={currentPage === totalPages}>
-				<Chevron orientation='right' />
-			</button>
+			{loading ? (
+				<LoadingButton />
+			) : (
+				<button
+					className={styles.pageButton}
+					onClick={() => handlePageChange(currentPage + 1)}
+					disabled={currentPage === totalPages}>
+					<Chevron orientation='right' />
+				</button>
+			)}
 		</div>
 	)
 }

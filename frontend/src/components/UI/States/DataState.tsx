@@ -2,9 +2,8 @@ import React from 'react'
 import Image from 'next/image'
 import emptyIllustration from '@/../public/no-data.svg'
 import styles from './States.module.scss'
-export type DataStateProps = {
-	message: string
-}
+import { DataStateProps } from './types'
+
 const DataState = ({ message }: DataStateProps) => {
 	return (
 		<div className={styles.container}>

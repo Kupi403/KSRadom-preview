@@ -1,4 +1,4 @@
-import { FORM_ERROR } from '@/constant/error'
+import { FORM_ERROR } from '@/constant/fallback'
 import styles from './Input.module.scss'
 import { InputProps } from './types'
 

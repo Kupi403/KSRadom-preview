@@ -1,52 +1,16 @@
-import React from 'react'
 import styles from './DownloadButton.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
-
 import { FaDownload } from 'react-icons/fa'
-
-import { SeasonsType } from '@/hooks/ReactQuery/useFetchSeasons'
-import { FileType } from '@/components/News/types'
-
-type DownloadButtonProps = {
-	file: FileType
-	children: React.ReactNode
-	href: string
-	season?: SeasonsType
-	isExternal?: boolean
-} & React.ComponentPropsWithoutRef<'button'> &
-	React.ComponentPropsWithoutRef<'a'>
-
-export const formatFileSize = (sizeInKB: number): string => {
-	const sizeInBytes = sizeInKB * 1024
-
-	if (sizeInBytes >= 1_000_000_000) {
-		return `${(sizeInBytes / 1_000_000_000).toFixed(2)} GB`
-	} else if (sizeInBytes >= 1_000_000) {
-		return `${(sizeInBytes / 1_000_000).toFixed(2)} MB`
-	} else if (sizeInBytes >= 1_000) {
-		return `${(sizeInBytes / 1_000).toFixed(2)} KB`
-	} else {
-		return `${sizeInBytes} B`
-	}
-}
-
-export const getFileIcon = (ext: string): string => {
-	if (!ext) return ''
-	const cleanedExt = ext.replace('.', '').toLowerCase()
-
-	const knownExtensions = ['pdf', 'docx', 'doc', 'txt', 'xls', 'xlsx', 'png', 'jpg', 'jpeg', 'mp3', 'mp4']
-
-	if (knownExtensions.includes(cleanedExt)) {
-		return `/icons/files/${cleanedExt}.svg`
-	}
-	return '/icons/files/pdf.svg'
-}
+import { DownloadButtonProps } from './types'
+import { formatFileSize, getFileIcon } from './utils'
 
 const DownloadButton = ({ children, file, href, isExternal, season, ...props }: DownloadButtonProps) => {
 	if (!file.ext) return null
+
 	const fileSize = formatFileSize(file.size)
 	const iconSrc = getFileIcon(file.ext)
+
 	return (
 		<Link
 			href={href}
@@ -59,7 +23,7 @@ const DownloadButton = ({ children, file, href, isExternal, season, ...props }: 
 				<div className={styles.icon}>
 					<Image
 						src={iconSrc}
-						alt={file.name}
+						alt={file.ext}
 						width={30}
 						height={30}
 					/>

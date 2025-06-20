@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './CalendarCard.module.scss'
-import { NO_INFO } from '@/constant/error'
+import { NO_INFO } from '@/constant/fallback'
 
 type CalendarSubtitleProps = {
 	icon: JSX.Element

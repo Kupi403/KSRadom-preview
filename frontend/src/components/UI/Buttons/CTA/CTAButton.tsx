@@ -2,14 +2,7 @@ import React from 'react'
 import styles from './CTAButton.module.scss'
 import Link from 'next/link'
 import { FaExternalLinkAlt } from 'react-icons/fa'
-
-type CTAButtonProps = {
-	priority: 'primary' | 'secondary' | 'tertiary' | 'error'
-	children: React.ReactNode
-	href?: string
-	isExternal?: boolean
-} & React.ComponentPropsWithoutRef<'button'> &
-	React.ComponentPropsWithoutRef<'a'>
+import { CTAButtonProps } from './types'
 
 const CTAButton = ({ priority, children, href, isExternal, ...props }: CTAButtonProps) => {
 	return href ? (

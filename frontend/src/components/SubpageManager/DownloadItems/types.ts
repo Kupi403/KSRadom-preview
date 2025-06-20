@@ -19,3 +19,5 @@ export type DownloadItem = {
 	download_categories: DownloadCategoryType[]
 	season: SeasonsType
 }
+
+export type DownloadItemsProps = { category: string | undefined; showSeason?: boolean }

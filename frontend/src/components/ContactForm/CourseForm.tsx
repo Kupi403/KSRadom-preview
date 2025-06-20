@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Input from './Input/Input'
 import { isEmail, isNotEmpty } from './utils'
-import useInput from '@/hooks/formHook'
+import useInput from '@/hooks/useInput'
 import { enqueueSnackbar } from 'notistack'
 import { sendEmail } from '@/services/emailService'
 import styles from './ContactForm.module.scss'

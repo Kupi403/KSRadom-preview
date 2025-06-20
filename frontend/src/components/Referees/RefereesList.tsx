@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 import RefereeGroup from './RefereeGroup'
 import styles from './Referees.module.scss'
 import SearchInput from '../UI/Search/SearchInput'
-import useDebouncedValue from '../UI/Search/util/useDebouncedValue'
+import useDebouncedValue from '../UI/Search/utils'
 import { RefereesListPropsType } from './types'
 
 const RefereesList = ({ data }: RefereesListPropsType) => {
