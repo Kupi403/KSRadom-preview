@@ -11,6 +11,14 @@ export type NewsCardProps = {
 }
 
 const NewsCard = ({ news, subpage }: NewsCardProps) => {
+	const thumbnailImage = news.thumbnail ? `${URL}${news.thumbnail.formats.small.url}` : IMAGE_NOT_FOUND
+
+	const altText = `${news.thumbnail.alternativeText ? news.thumbnail.alternativeText : 'Zdjęcie miniaturka dla postu'}`
+
+	const categoryName = news.categories[0] ? news.categories[0].name : 'Aktualności'
+
+	const datePublished = news.startTime ?? news.publishedAt
+
 	return (
 		<Link
 			className={`${styles['news-card']} ${subpage ? styles.subpage : styles.mainpage}`}
@@ -19,12 +27,12 @@ const NewsCard = ({ news, subpage }: NewsCardProps) => {
 			scroll>
 			<div className={styles.image}>
 				<Image
-					src={news.thumbnail ? `${URL}${news.thumbnail.formats.small.url}` : IMAGE_NOT_FOUND}
+					src={thumbnailImage}
 					fill
 					sizes='(max-width: 768px) 100vw, 50vw'
-					alt={`${news.thumbnail.alternativeText ? news.thumbnail.alternativeText : 'Zdjęcie miniaturka dla postu'}`}
+					alt={altText}
 				/>
-				<span className={styles.tag}>{news.categories[0] ? news.categories[0].name : 'Aktualności'}</span>
+				<span className={styles.tag}>{categoryName}</span>
 			</div>
 			<div className={styles.content}>
 				<div
@@ -33,7 +41,7 @@ const NewsCard = ({ news, subpage }: NewsCardProps) => {
 					<h3 className={styles.title}>{news.title || 'Tytuł'}</h3>
 					<NewsDateAndCreatorInfo
 						createdBy={news.createdBy}
-						publishedAt={news.publishedAt || '2022-12-12T12:12:12.000Z'}
+						publishedAt={datePublished}
 					/>
 				</div>
 				<p className={`${styles.text} ${styles.sliced}`}>{news.shortDescription}</p>

@@ -21,8 +21,9 @@
 		display: flex;
 		flex-direction: column;
 		flex-basis: content;
-		padding: 1em;
+		padding: 10px;
 		gap: 20px;
+		margin-bottom: 100px;
 		background: c.$red-gradient;
 		border-radius: s.$radius;
 		box-shadow: c.$item-shadow;
@@ -35,6 +36,7 @@
 		@media (min-width: 768px) {
 			flex-direction: row;
 			justify-content: space-between;
+			margin-bottom: 50px;
 		}
 
 		.subtitle {
@@ -201,7 +203,7 @@
 					font-size: 1em;
 
 					&:hover {
-						color: #fff;
+						color: c.$pure-white;
 					}
 				}
 			}

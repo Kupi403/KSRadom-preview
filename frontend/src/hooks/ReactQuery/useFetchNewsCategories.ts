@@ -1,21 +1,7 @@
-// const [categories, setCategories] = useState<CategoriesType[] | null>(null)
-// useEffect(() => {
-// 	const fetchCategories = async () => {
-// 		const res = await fetch('http://localhost:1337/api/categories')
-// 		const data: CategoriesResponseType = await res.json()
-// 		const mapped = data.data.map(el => ({
-// 			name: el.name,
-// 			path: el.path,
-// 		}))
-// 		setCategories(mapped)
-// 	}
-
-// 	fetchCategories()
-// }, [])
 'use client'
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import { API_URL } from '@/constant/url'
-import { CategoriesResponseType, CategoriesType } from '@/components/News/AllNews/AllNews'
+import { CategoriesResponseType, CategoriesType } from '@/components/News/types'
 
 const fetchNewsCategories = async (): Promise<CategoriesResponseType | null> => {
 	try {

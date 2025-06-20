@@ -4,8 +4,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { FaDownload } from 'react-icons/fa'
-import { FileType } from '@/types/PostType'
+
 import { SeasonsType } from '@/hooks/ReactQuery/useFetchSeasons'
+import { FileType } from '@/components/News/types'
 
 type DownloadButtonProps = {
 	file: FileType
@@ -31,6 +32,7 @@ export const formatFileSize = (sizeInKB: number): string => {
 }
 
 export const getFileIcon = (ext: string): string => {
+	if (!ext) return ''
 	const cleanedExt = ext.replace('.', '').toLowerCase()
 
 	const knownExtensions = ['pdf', 'docx', 'doc', 'txt', 'xls', 'xlsx', 'png', 'jpg', 'jpeg', 'mp3', 'mp4']
@@ -42,6 +44,7 @@ export const getFileIcon = (ext: string): string => {
 }
 
 const DownloadButton = ({ children, file, href, isExternal, season, ...props }: DownloadButtonProps) => {
+	if (!file.ext) return null
 	const fileSize = formatFileSize(file.size)
 	const iconSrc = getFileIcon(file.ext)
 	return (
@@ -60,7 +63,7 @@ const DownloadButton = ({ children, file, href, isExternal, season, ...props }: 
 						width={30}
 						height={30}
 					/>
-					<span className={styles.ext}>{file.ext.slice(1)}</span>
+					{file.ext && <span className={styles.ext}>{file.ext.slice(1)}</span>}
 				</div>
 
 				<div className={styles.name}>
@@ -72,7 +75,7 @@ const DownloadButton = ({ children, file, href, isExternal, season, ...props }: 
 				<span className={styles.icon}>
 					<FaDownload />
 				</span>
-				<span className={styles.size}>{fileSize}</span>
+				{file.ext && <span className={styles.size}>{fileSize}</span>}
 			</div>
 		</Link>
 	)

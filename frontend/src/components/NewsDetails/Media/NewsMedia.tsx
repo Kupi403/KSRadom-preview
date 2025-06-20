@@ -1,12 +1,13 @@
 'use client'
 
-import { MediaType } from '@/types/PostType'
 import React, { useEffect } from 'react'
 import Image from 'next/image'
 import GLightbox from 'glightbox'
 import 'glightbox/dist/css/glightbox.min.css'
 import { URL } from '@/constant/url'
 import styles from '../NewsDetails.module.scss'
+import { MediaType } from '@/components/News/types'
+import errorImage from '@/../public/empty.png'
 
 const NewsMedia = ({ media }: { media: MediaType[] }) => {
 	useEffect(() => {
@@ -15,15 +16,12 @@ const NewsMedia = ({ media }: { media: MediaType[] }) => {
 	}, [media])
 
 	if (!media || media.length === 0) return null
-
 	return (
 		<div className={styles.assets}>
 			<p>Galeria:</p>
 			<div className={styles.gallery}>
 				{media.map((item, index) => {
-					const mediaSrc = item.formats?.small?.url
-						? `${URL}${item.formats.small.url}`
-						: 'https://picsum.photos/200/300'
+					const mediaSrc = item.formats?.small?.url ? `${URL}${item.formats.small.url}` : errorImage.src
 
 					return (
 						<a
@@ -34,7 +32,7 @@ const NewsMedia = ({ media }: { media: MediaType[] }) => {
 							className={`${styles.item} glightbox`}>
 							<Image
 								src={mediaSrc}
-								alt={item.alternativeText || 'zdjecie'}
+								alt={item.alternativeText || 'Zdjęcie'}
 								fill
 							/>
 						</a>

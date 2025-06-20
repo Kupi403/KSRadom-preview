@@ -1,11 +1,11 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styles from './SubPageHeader.module.scss'
 import obsadaHero from '@/assets/images/obsada-category.jpg'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import useFetchCategories from '@/hooks/ReactQuery/useFetchCategories'
-import { useFindHeaderTitle } from '@/lib/helpers/findHeaderTitle'
+import { useFindHeaderTitle } from './utils'
 import { SubPageHeaderProps } from './types'
 
 const SubPageHeader = ({ errorTitle }: SubPageHeaderProps) => {
@@ -14,8 +14,25 @@ const SubPageHeader = ({ errorTitle }: SubPageHeaderProps) => {
 	const lastParam = params[params.length - 1]
 	const documentId = lastParam.split('-').pop()?.length === 24 ? lastParam.split('-').pop() : null
 
-	const { data: categories } = useFetchCategories(documentId ?? null)
 	const heroRef = useRef<HTMLDivElement>(null)
+
+	const { data: categories } = useFetchCategories(documentId ?? null)
+	const img = documentId ? categories?.image : useFindHeaderTitle(lastParam)?.image
+
+	useEffect(() => {
+		const handleScroll = () => {
+			if (heroRef.current) {
+				const scrollPosition = window.pageYOffset
+
+				heroRef.current.style.transform = `translateY(${scrollPosition * 0.5}px)`
+			}
+		}
+
+		window.addEventListener('scroll', handleScroll)
+		return () => {
+			window.removeEventListener('scroll', handleScroll)
+		}
+	}, [])
 
 	const generateBreadcrumbs = () => {
 		const headerElements = [...params].map(segment => useFindHeaderTitle(segment))
@@ -70,22 +87,6 @@ const SubPageHeader = ({ errorTitle }: SubPageHeaderProps) => {
 		)
 	}
 
-	const img = documentId ? categories?.image : useFindHeaderTitle(lastParam)?.image
-
-	useEffect(() => {
-		const handleScroll = () => {
-			if (heroRef.current) {
-				const scrollPosition = window.pageYOffset
-
-				heroRef.current.style.transform = `translateY(${scrollPosition * 0.5}px)`
-			}
-		}
-
-		window.addEventListener('scroll', handleScroll)
-		return () => {
-			window.removeEventListener('scroll', handleScroll)
-		}
-	}, [])
 	return (
 		<header className={styles['subpage-header']}>
 			<div

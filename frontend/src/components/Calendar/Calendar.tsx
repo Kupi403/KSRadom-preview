@@ -7,6 +7,8 @@ import useFetchEvents from '@/hooks/ReactQuery/useFetchEvents'
 import { generateCalendarRange } from './utils'
 import EventModal from './CalendarModal/EventModal'
 import CalendarSidebar from './CalendarSidebar/CalendarSidebar'
+import ErrorComponent from '../UI/States/Error'
+import LoadingSubpage from '../UI/Loading/LoadingSubpage'
 
 const Calendar = () => {
 	const today = new Date()
@@ -19,8 +21,21 @@ const Calendar = () => {
 	const {
 		data: events = [],
 		isLoading,
+		isError,
+		refetch,
 		error,
 	} = useFetchEvents({ type: 'all', startDate: calendarStartDate, endDate: calendarEndDate })
+
+	if (isError)
+		return (
+			<ErrorComponent
+				description='Błąd pobierania danych.'
+				error={error}
+				refetchFn={refetch}
+			/>
+		)
+
+	if (isLoading) return <LoadingSubpage />
 
 	return (
 		<div className={styles.calendar}>

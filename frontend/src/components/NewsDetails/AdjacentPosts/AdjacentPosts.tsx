@@ -1,9 +1,10 @@
 import React from 'react'
 import AdjacentCard from './AdjacentCard'
 import styles from '../NewsDetails.module.scss'
-import { AdjacentPostsProps } from '../../types'
+import { AdjacentPostsProps } from '../types'
 
 const AdjacentPosts = ({ adjacentPosts }: AdjacentPostsProps) => {
+
 	return (
 		<div className={styles.navigation}>
 			<p className={styles.subtitle}>Zobacz również:</p>

@@ -12,5 +12,3 @@ export const useFindHeaderTitle = (title: string) => {
 	}
 	return foundLink
 }
-
-export default useFindHeaderTitle

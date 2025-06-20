@@ -108,8 +108,6 @@ export const generateCalendarSelectBoundaries = (today: Date) => {
 	return { dateMinBoundary, dateMaxBoundary }
 }
 
-//sidebar
-
 export const useMonthComparison = () => {
 	const isPastOrCurrentMonth = (date: Date): boolean => {
 		const currentMonthStart = startOfMonth(new Date())
@@ -127,7 +125,6 @@ export const useMonthComparison = () => {
 }
 
 export const useEventFiltering = (currentMonth: Date) => {
-	const { isPastMonth } = useMonthComparison()
 	const calendarEvents = useSelector((state: RootState) =>
 		state.calendar.events.filter(event => isSameMonth(new Date(event.startDate), currentMonth))
 	)

@@ -2,7 +2,6 @@
 
 import React, { useEffect } from 'react'
 import CalendarCard from '../CalendarCard/CalendarCard'
-// import styles from '../Calendar.module.scss'
 import styles from './CalendarSidebar.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'

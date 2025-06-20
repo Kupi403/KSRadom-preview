@@ -1,4 +1,3 @@
-import { type BlocksContent } from '@strapi/blocks-react-renderer'
 import { BlocksContentFixed } from './util'
 export type CategoriesType = {
 	name: string
@@ -28,7 +27,7 @@ export type NewsPaginationProps = {
 }
 
 export type NewsListProps = {
-	news: NewsType[] | undefined
+	news: NewsType[]
 	isFetching: boolean
 	isError: boolean
 	error: any
@@ -37,66 +36,25 @@ export type NewsListProps = {
 	subpage?: boolean
 }
 
-// export type NewsThumbnail = {
-// 	newDescription: BlocksContent
-// 	id: number
-// 	title: string
-// 	description?: string
-// 	shortDescription: string
-// 	slug?: string
-// 	createdAt: string
-// 	publishedAt: string
-// 	thumbnail: {
-// 		url: string
-// 		alternativeText?: string
-// 		formats: {
-// 			small: { url: string }
-// 			medium?: { url: string }
-// 		}
-// 	}
-// 	categories: {
-// 		name: string
-// 	}[]
-// }
-
-// export interface NewsType extends NewsThumbnail {
-// 	newDescription: BlocksContent
-// 	media?: MediaType[]
-// 	files?: FileType[]
-// 	updatedAt?: string
-// 	documentId: string
-// 	publishedAt?: string
-// 	createdBy?:
-// 		| {
-// 				firstname: string
-// 				lastname: string
-// 				username: string | null
-// 		  }
-// 		| undefined
-// }
-
 export type NewsType = {
 	newDescription: BlocksContentFixed
-	id: number
+	id?: number
 	title: string
 	description?: string
-	shortDescription: string
+	shortDescription?: string
 	slug?: string
 	createdAt: string
-	publishedAt?: string
+	startTime?: string
+	endTime?: string
+	publishedAt: string
 	updatedAt?: string
-	documentId: string
+	documentId?: string
 	thumbnail: {
 		url: string
 		alternativeText?: string
-		formats: {
-			small: { url: string }
-			medium?: { url: string }
-		}
+		formats: FormatTypes
 	}
-	categories: {
-		name: string
-	}[]
+	categories: CategoriesType[]
 	media?: MediaType[]
 	files?: FileType[]
 	createdBy?: {
@@ -141,6 +99,13 @@ export type MediaFormat = {
 	url: string
 }
 
+export type FormatTypes = {
+	thumbnail?: MediaFormat
+	small?: MediaFormat
+	medium?: MediaFormat
+	large?: MediaFormat
+}
+
 export type MediaType = {
 	id: number
 	documentId: string
@@ -169,13 +134,11 @@ export type MediaType = {
 }
 
 export type MetaType = {
-	meta?: {
-		pagination: {
-			page: number
-			pageSize: number
-			pageCount: number
-			total: number
-		}
+	pagination: {
+		page: number
+		pageSize: number
+		pageCount: number
+		total: number
 	}
 }
 
@@ -184,14 +147,11 @@ export type NewsResponse = {
 	meta?: MetaType
 }
 
-// export type NewsThumbnailResponse = {
-// 	data: NewsThumbnail[]
-// 	meta?: MetaType
-// }
-
-export type NewsSortOption = {
+export type NewsFetchOptions = {
 	order: 'desc' | 'asc' | string
 	currentPage: number
 	postsPerPage: number
+	pagination?: boolean
 	category?: string | null
+	filterFuture?: boolean
 }

@@ -1,5 +1,5 @@
+import useFetchNews from '@/hooks/ReactQuery/useFetchNews'
 import NewsList from '../NewsList'
-import { useFetchMainPageNews } from '@/hooks/ReactQuery/useFetchPosts'
 
 const MainNews = () => {
 	const {
@@ -8,14 +8,16 @@ const MainNews = () => {
 		error,
 		isFetching,
 		refetch,
-	} = useFetchMainPageNews({
+	} = useFetchNews({
 		order: 'desc',
 		postsPerPage: 5,
+		currentPage: 1,
+		pagination: false,
 	})
 
 	return (
 		<NewsList
-			news={news?.data}
+			news={news?.data ?? []}
 			isFetching={isFetching}
 			isError={isError}
 			refetchFn={refetch}

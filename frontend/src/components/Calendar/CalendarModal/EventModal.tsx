@@ -12,6 +12,7 @@ import { NO_INFO } from '@/constant/error'
 import EventSubtitle from './EventSubtitle'
 import { MdPlace } from 'react-icons/md'
 import { URL } from '@/constant/url'
+import errorImage from '@/../public/empty.png'
 
 const EventModal = () => {
 	const dispatch = useDispatch()
@@ -31,6 +32,8 @@ const EventModal = () => {
 
 	const isSameDay = event.endDate && new Date(event.startDate).toDateString() === new Date(event.endDate).toDateString()
 
+	const dateText = `${dayName}, ${date},  ${endTime && isSameDay ? `${startTime} - ${endTime}` : startTime}`
+
 	return createPortal(
 		<div
 			className={styles.backdrop}
@@ -40,7 +43,7 @@ const EventModal = () => {
 				onClick={e => e.stopPropagation()}>
 				<div className={styles.image}>
 					<Image
-						src={event ? `${URL}${event.place.image.url}` : 'https://picsum.photos/1920/1080'}
+						src={event ? `${URL}${event.place.image.url}` : errorImage}
 						alt={event ? event.place.name : NO_INFO}
 						fill
 						objectFit='cover'
@@ -54,7 +57,7 @@ const EventModal = () => {
 							<EventSubtitle
 								icon={<FaRegClock />}
 								subtitle={'data'}
-								text={`${dayName}, ${date},  ${endTime && isSameDay ? `${startTime} - ${endTime}` : startTime}`}
+								text={dateText}
 							/>
 							<EventSubtitle
 								icon={<MdPlace />}

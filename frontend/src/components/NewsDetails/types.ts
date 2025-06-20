@@ -1,4 +1,6 @@
+import { BlocksContent } from '@strapi/blocks-react-renderer'
 import { CategoriesType, MetaType } from '../News/types'
+import { BlocksContentFixed } from '../News/util'
 
 export type CategoriesResponseType = {
 	data: CategoriesType[]
@@ -8,10 +10,10 @@ export type CategoriesResponseType = {
 export type AdjacentPostType = {
 	id: number
 	documentId: string
+	newDescription: BlocksContentFixed
 	slug: string
 	title: string
 	createdAt: string
-	description: string
 	thumbnail: {
 		id: number
 		documentId: string

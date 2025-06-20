@@ -10,10 +10,7 @@ import NavMobile from './NavMobile/NavMobile'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { RootState } from '@/redux/store'
-import { useSelector } from 'react-redux'
 const Navbar = () => {
-	const { isOpen } = useSelector((state: RootState) => state.eventModal)
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
 	const [headerHeight, setHeaderHeight] = useState<number>(0)
 	const [isLogoActive, setIsLogoActive] = useState<boolean>(false)

@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { NavMobileItemProps } from '../types'
-import NavItem from '../NavItems/NavItem'
 import styles from './NavMobile.module.scss'
 import { useEffect } from 'react'
 
@@ -30,7 +29,7 @@ const NavMobile: React.FC<NavMobileItemProps> = ({ items, isMobileMenuOpen, setI
 										className={`${styles.item} ${styles.subitem}`}
 										onClick={() => setIsMobileMenuOpen(false)}>
 										<Link
-											href={sub.isExternal ? '' : `${link.address}${sub.address}`}
+											href={sub.isExternal ? sub.address : `${link.address}${sub.address}`}
 											className={`${styles.link} ${styles.sublink}`}>
 											{sub.text}
 										</Link>

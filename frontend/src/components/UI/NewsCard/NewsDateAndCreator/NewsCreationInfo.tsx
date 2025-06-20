@@ -14,7 +14,7 @@ type NewsCreationInfoPropsProps = {
 	newsDetails?: boolean
 }
 const NewsCreationInfo = ({ publishedAt, createdBy }: NewsCreationInfoPropsProps) => {
-	const formatedDate = useSetDate(publishedAt)
+	const formatedDate = publishedAt ? useSetDate(publishedAt) : useSetDate(new Date().toISOString())
 	const name = createdBy ? `${createdBy.firstname} ${createdBy.lastname[0]}.` : CREATOR_NAME
 
 	return (

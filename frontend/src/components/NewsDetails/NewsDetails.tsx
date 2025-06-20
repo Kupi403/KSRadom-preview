@@ -9,32 +9,35 @@ import NewsMedia from './Media/NewsMedia'
 import AdjacentPosts from './AdjacentPosts/AdjacentPosts'
 import Description from './Description/Description'
 import Categories from './NewsCategories/NewsCategories'
-import { URL } from '@/constant/url'
+
 import styles from './NewsDetails.module.scss'
 import { NewsType } from '../News/types'
+import { getBestThumbnailURL } from './utils'
+import { BlocksContent } from '@strapi/blocks-react-renderer'
 
 const NewsDetails = ({ post }: { post: NewsType }) => {
-	const { data: adjacentPosts, isLoading, isError } = useFetchAdjacentPosts(post.documentId)
+	const { data: adjacentPosts, isLoading, isError } = useFetchAdjacentPosts(post.documentId || '')
 
+	const thumbnailImage = getBestThumbnailURL(post.thumbnail.formats)
 	return (
 		<article className={styles.post}>
 			<h1 className={styles.title}>{post.title}</h1>
 
 			<NewsDateAndCreatorInfo
-				publishedAt={post.createdAt}
+				publishedAt={post.startTime ?? post.publishedAt}
 				createdBy={post.createdBy}
 				newsDetails
 			/>
 			<div className={styles.image}>
 				<Image
-					src={post.thumbnail?.url ? `${URL}${post.thumbnail.url}` : 'https://picsum.photos/800'}
+					src={thumbnailImage}
 					alt={post.title}
 					fill
 				/>
 			</div>
 			<Categories categories={post.categories} />
 
-			<Description content={post.newDescription ?? post.description} />
+			<Description content={(post.newDescription as BlocksContent) ?? post.description} />
 
 			{post.files && <NewsFiles files={post.files} />}
 

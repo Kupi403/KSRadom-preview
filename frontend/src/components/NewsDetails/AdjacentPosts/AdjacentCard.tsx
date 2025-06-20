@@ -5,11 +5,12 @@ import useSetDate from '@/lib/helpers/setDate'
 import { MdDateRange } from 'react-icons/md'
 import styles from '../NewsDetails.module.scss'
 import { URL } from '@/constant/url'
-import { AdjacentPostType } from '../../types'
+import { AdjacentPostType } from '../types'
+import extractShortDescription from '@/lib/helpers/extractShortDescription'
 
 const AdjacentCard = ({ data }: { data: AdjacentPostType }) => {
 	const date = useSetDate(data.createdAt)
-
+	const shortDescription = extractShortDescription(data.newDescription)
 	if (data)
 		return (
 			<Link
@@ -27,7 +28,7 @@ const AdjacentCard = ({ data }: { data: AdjacentPostType }) => {
 							<MdDateRange color='#eee' />
 							{date}
 						</p>
-						<p className={styles['adjacent-description']}>{data.description.slice(0, 150)}</p>
+						<p className={styles['adjacent-description']}>{shortDescription}</p>
 					</div>
 				</div>
 			</Link>

@@ -1,4 +1,4 @@
-import { FileType } from '@/types/PostType'
+import { FileType } from '@/components/News/types'
 import { SeasonsType } from '@/hooks/ReactQuery/useFetchSeasons'
 
 export type DownloadCategoryType = {

@@ -1,7 +1,7 @@
 import Link from 'next/dist/client/link'
 import React from 'react'
 import styles from '../NewsDetails.module.scss'
-import { CategoriesType } from '../../types'
+import { CategoriesType } from '@/components/News/types'
 
 const NewsCategories = ({ categories }: { categories: CategoriesType[] }) => {
 	return (

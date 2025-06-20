@@ -5,12 +5,12 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import NewsList from '../NewsList'
 import NewsPagination from './NewsPagination/NewsPagination'
 import styles from './AllNews.module.scss'
-import Options, { OptionsType } from '../../UI/Buttons/Options/Options'
-import { useFetchAllNews } from '@/hooks/ReactQuery/useFetchPosts'
+import Options from '../../UI/Buttons/Options/Options'
 import ErrorComponent from '@/components/UI/States/Error'
 import useFetchNewsCategories from '@/hooks/ReactQuery/useFetchNewsCategories'
 import { SortType } from '../types'
 import { SORT_OPTIONS } from '../const'
+import useFetchNews from '@/hooks/ReactQuery/useFetchNews'
 
 export const POSTS_PER_PAGE = 9
 
@@ -49,14 +49,14 @@ const AllNews = () => {
 		error,
 		isFetching,
 		refetch,
-	} = useFetchAllNews({
+	} = useFetchNews({
 		order,
 		currentPage,
 		postsPerPage: POSTS_PER_PAGE,
+		pagination: true,
 		category: selectedCategory,
 	})
-
-	const totalPosts = news?.meta?.pagination.total || 0
+	const totalPosts = news?.meta?.pagination?.total ?? 0
 
 	useEffect(() => {
 		setCurrentPage(currentPageFromURL)
@@ -110,7 +110,7 @@ const AllNews = () => {
 				)}
 			</div>
 			<NewsList
-				news={news?.data}
+				news={news?.data ?? []}
 				isFetching={isFetching}
 				refetchFn={refetch}
 				isError={isError}

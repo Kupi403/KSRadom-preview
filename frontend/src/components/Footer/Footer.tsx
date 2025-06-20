@@ -118,7 +118,7 @@ const Footer = () => {
 					<p>
 						Wykonanie:{' '}
 						<Link
-							href={'https://github.com/Kupi403'}
+							href={'https://www.linkedin.com/in/michal-kupidura-85ab1326a'}
 							target='_blank'>
 							Michał Kupidura
 						</Link>

@@ -2,8 +2,9 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import { API_URL } from '@/constant/url'
 import { BlocksContent } from '@strapi/blocks-react-renderer'
-import { MediaType } from '@/types/PostType'
+
 import { SeasonsType } from './useFetchSeasons'
+import { MediaType } from '@/components/News/types'
 
 export type CourseInfoType = {
 	description: BlocksContent

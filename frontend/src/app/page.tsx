@@ -6,7 +6,7 @@ import SectionContainer from '@/components/UI/SectionContainer/SectionContainer'
 import Aside from '@/components/Aside/Aside'
 import MainNews from '@/components/News/MainNews/MainNews'
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout() {
 	return (
 		<>
 			<MainHeader />

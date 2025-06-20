@@ -1,7 +1,7 @@
 import SubpageManager from '@/components/SubpageManager/SubpageManager'
 import LoadingSubpage from '@/components/UI/Loading/LoadingSubpage'
 import SectionContainer from '@/components/UI/SectionContainer/SectionContainer'
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 
 const page = () => {
 	return (

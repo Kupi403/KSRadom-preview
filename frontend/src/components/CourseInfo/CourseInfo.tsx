@@ -1,12 +1,14 @@
+//TO BE DONE
+
 'use client'
 
 import useFetchCourseInfo from '@/hooks/ReactQuery/useFetchCourseInfo'
-import Description from '../News/NewsDetails/Description/Description'
 import styles from './CourseInfo.module.scss'
 import LoadingSubpage from '../UI/Loading/LoadingSubpage'
 import ErrorComponent from '../UI/States/Error'
 import { DateFormat, getLocaleDate } from '../Calendar/utils'
 import CourseForm from '../ContactForm/CourseForm'
+import Description from '../NewsDetails/Description/Description'
 
 const CourseInfo = () => {
 	const { data: courseInfo, isLoading, isError, error, refetch } = useFetchCourseInfo()

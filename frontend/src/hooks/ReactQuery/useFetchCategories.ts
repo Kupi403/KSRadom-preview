@@ -1,10 +1,15 @@
 'use client'
-
-import { CategoriesType } from '@/types/PostType'
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import { API_URL, URL } from '@/constant/url'
+import { CategoriesType } from '@/components/News/types'
 
-const fetchCategories = async (documentId: string | null | undefined): Promise<CategoriesType | null> => {
+export type SubpageCategoriesType = {
+	title: string
+	categories: CategoriesType[]
+	image: string
+}
+
+const fetchCategories = async (documentId: string | null | undefined): Promise<SubpageCategoriesType | null> => {
 	if (!documentId) return null
 	try {
 		const response = await fetch(`${API_URL}/posts/${documentId}?populate=categories&populate=thumbnail`)
@@ -24,7 +29,7 @@ const fetchCategories = async (documentId: string | null | undefined): Promise<C
 	}
 }
 
-const useFetchCategories = (documentId: string | null): UseQueryResult<CategoriesType, Error> => {
+const useFetchCategories = (documentId: string | null): UseQueryResult<SubpageCategoriesType, Error> => {
 	return useQuery({
 		queryKey: ['category', documentId],
 		queryFn: () => fetchCategories(documentId!),

@@ -46,9 +46,9 @@
 
 		.event {
 			width: 100%;
-			cursor: pointer;
 			margin: 0;
-			@include m.fadeIn();
+			cursor: pointer;
+
 			@media (min-width: 512px) and (max-width: 991px) {
 				width: calc(50% - 10px);
 			}
@@ -57,7 +57,7 @@
 		.past {
 			opacity: 0.5;
 			cursor: default !important;
-			@include m.fadeInPast();
+			@include m.fadeIn(0.3s, 1, 0.5);
 			pointer-events: none;
 		}
 	}

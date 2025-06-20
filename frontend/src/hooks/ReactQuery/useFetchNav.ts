@@ -1,7 +1,8 @@
 'use client'
-import { FileType, NewsType } from '@/types/PostType'
+
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
 import { API_URL } from '@/constant/url'
+import { FileType } from '@/components/News/types'
 
 export type NavType = {
 	id: number
