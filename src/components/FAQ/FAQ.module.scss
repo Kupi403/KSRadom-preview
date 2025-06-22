@@ -1,0 +1,34 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+
+.faq {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	.title {
+		text-align: center;
+		padding: 20px 0;
+	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		.search {
+			width: 100%;
+			max-width: 300px;
+		}
+
+		.questions {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 100%;
+			padding: 10px;
+			border-radius: s.$radius;
+			box-shadow: c.$item-shadow;
+			gap: 10px;
+			background-color: c.$pure-white;
+		}
+	}
+}

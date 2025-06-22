@@ -1,0 +1,20 @@
+@use '@/styles/sizes' as s;
+@use '@/styles/colors' as c;
+@use '@/styles/mixins.scss' as m;
+
+.calendar {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+
+		@media (min-width: 992px) {
+			flex-direction: row;
+		}
+	}
+}

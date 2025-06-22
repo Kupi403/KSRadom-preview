@@ -1,0 +1,68 @@
+.toggle-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px;
+}
+
+.toggle-button {
+	position: relative;
+	width: 60px;
+	height: 30px;
+	border-radius: 15px;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 8px;
+	transition: background-color 0.3s ease;
+	outline: none;
+
+	&.light {
+		background-color: c.$card-background;
+
+		.toggle-circle {
+			background-color: transparent;
+			border: 2px solid c.$light-gold;
+			box-shadow: c.$item-shadow;
+		}
+	}
+
+	&.dark {
+		background-color: c.$dark;
+
+		.toggle-circle {
+			background-color: transparent;
+			border: 2px solid rgb(192, 192, 192);
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+		}
+	}
+
+	.icon {
+		color: c.$gray;
+		margin-top: 5px;
+	}
+
+	.sun,
+	.moon {
+		color: c.$gray-medium;
+	}
+
+	.toggle-circle {
+		position: absolute;
+		top: 3px;
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.3s ease;
+
+		&.left {
+			transform: translateX(-5px);
+		}
+
+		&.right {
+			transform: translateX(25px);
+		}
+	}
+}

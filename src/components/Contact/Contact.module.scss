@@ -1,0 +1,68 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+.content {
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: center;
+	gap: 20px;
+
+	@media (min-width: 992px) {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.map {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		gap: 10px;
+
+		height: 500px;
+		justify-content: center;
+		width: 100%;
+
+		@media (min-width: 992px) {
+			height: auto;
+		}
+
+		iframe {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			border-radius: s.$radius;
+			box-shadow: c.$item-shadow;
+		}
+
+		.img {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 250px;
+			height: 250px;
+			background: c.$red-gradient;
+			border-radius: 50%;
+
+			img {
+				object-fit: contain;
+			}
+		}
+	}
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		gap: 10px;
+		padding: 20px;
+		background-color: c.$pure-white;
+		box-shadow: c.$item-shadow;
+		border-radius: s.$radius;
+
+		@media (min-width: 992px) {
+			max-width: 700px;
+		}
+	}
+}

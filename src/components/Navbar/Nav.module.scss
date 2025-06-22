@@ -1,0 +1,104 @@
+@use '@/styles/sizes.scss' as s;
+@use '@/styles/colors.scss' as c;
+
+.navbar {
+	position: fixed;
+	display: flex;
+	justify-content: space-between;
+	top: 20px;
+	right: 50%;
+	transform: translate(50%);
+	justify-content: space-between;
+	align-items: center;
+	width: calc(100% - 2em);
+	max-width: 1400px;
+	height: 60px;
+	padding: 0 15px;
+
+	border-radius: 5px;
+	box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.75);
+
+	z-index: 999;
+
+	.burger {
+		z-index: 1001;
+
+		@media (min-width: 1440px) {
+			display: none;
+		}
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-image: url('../../assets/images/mzpn-background.png');
+		background-color: c.$red;
+		background-size: cover;
+		background-position: center;
+		opacity: 0.9;
+		border-radius: 5px;
+		z-index: -1;
+		transition: opacity 0.2s;
+	}
+
+	.logo {
+		position: relative;
+		transform: scale(1.1);
+		object-fit: cover;
+		overflow: hidden;
+		transition: transform 0.3s;
+		z-index: 1;
+		&.scale {
+			transform: scale(1);
+		}
+
+		img {
+			width: auto;
+			aspect-ratio: 1/1;
+		}
+
+		.circle {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			z-index: -1;
+			top: 0;
+			display: flex;
+			justify-content: center;
+			border-radius: 50%;
+			height: 80px;
+			width: 80px;
+			padding: 5px;
+			background: c.$red-gradient;
+			opacity: 0;
+			transition: opacity 0.3s;
+
+			&.active {
+				opacity: 1;
+			}
+		}
+
+		.image {
+			display: inline-block;
+			height: 80px;
+		}
+	}
+
+	&:hover::after,
+	.logo:hover ~ &::after,
+	.burger:hover ~ &::after {
+		opacity: 1;
+	}
+}
+
+@media (min-width: 912px) {
+	.navbar {
+		.link {
+			font-size: 16px;
+		}
+	}
+}

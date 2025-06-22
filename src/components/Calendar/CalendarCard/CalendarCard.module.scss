@@ -1,0 +1,216 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+@use '@/styles/mixins.scss' as m;
+
+.place {
+	justify-content: end;
+}
+
+.right-text {
+	text-align: end;
+}
+
+.calendar-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 140px;
+	width: 100%;
+	gap: 16px;
+
+	.box {
+		position: relative;
+		box-shadow: c.$item-shadow;
+		border-radius: s.$radius;
+		background-color: c.$card-background;
+		overflow: hidden;
+		font-size: 13px;
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			min-height: 150px;
+			height: 100%;
+			padding: 16px;
+		}
+	}
+
+	.date-box {
+		position: relative;
+		display: none;
+		flex-direction: column;
+		justify-content: space-between;
+		text-align: center;
+		align-items: center;
+		min-width: 100px;
+		width: 40%;
+		padding: 32px 16px 0 16px;
+		font-weight: bold;
+		text-align: center;
+
+		.day {
+			font-size: 22px;
+		}
+		.month,
+		.year,
+		.day-name {
+			font-size: 16px;
+		}
+
+		.day-name {
+			position: absolute;
+			bottom: 0;
+			padding: 10px;
+			width: 100%;
+			background-color: c.$light-red;
+			text-transform: uppercase;
+			color: c.$card-background;
+			font-size: 11px;
+		}
+	}
+
+	.day-mobile {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		background-color: c.$light-red;
+		color: c.$pure-white;
+		text-align: center;
+		font-weight: bold;
+		padding: 8px 0;
+	}
+
+	.date-info {
+		display: flex;
+		justify-content: space-between;
+		gap: 16px;
+	}
+
+	.subtitle {
+		display: flex;
+		flex-direction: column;
+
+		.info {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 8px;
+			font-weight: 600;
+			color: c.$dark;
+			text-transform: uppercase;
+		}
+
+		.content {
+			display: flex;
+		}
+	}
+
+	.description {
+		margin-top: auto;
+	}
+}
+
+@media (min-width: 512px) {
+	.calendar-card.auto {
+		flex-direction: row;
+		align-items: stretch;
+
+		.box {
+			font-size: 14px;
+			width: 100%;
+
+			.content {
+				min-width: 70%;
+			}
+
+			.day-mobile {
+				display: none;
+			}
+		}
+
+		.date-box {
+			display: flex;
+			width: 150px;
+
+			.day-name {
+				font-size: 13px;
+			}
+		}
+	}
+}
+
+.limited {
+	max-width: 30ch;
+}
+
+.skeleton {
+	background-color: c.$gray-light !important;
+	border-radius: s.$radius;
+	@include m.shimmer-effect();
+	margin: 0 auto;
+
+	&.day {
+		width: 50px;
+		height: 30px;
+	}
+
+	&.month,
+	&.year {
+		width: 80px;
+		height: 20px;
+		margin-top: s.$radius;
+	}
+
+	&.year {
+		width: 60px;
+	}
+
+	&.description {
+		width: 60%;
+		height: 20px;
+		margin: 4px 0;
+	}
+
+	&.day-name,
+	&.day-mobile {
+		width: 100%;
+		height: 30px;
+		border-radius: 0px;
+	}
+
+	&.line {
+		width: 100%;
+		height: 14px;
+		margin: 4px 0;
+	}
+}
+
+@media (min-width: 768px) {
+	.calendar-card.auto {
+		.box {
+			.content {
+				height: auto;
+			}
+			.day-mobile {
+				display: flex;
+			}
+		}
+
+		.date-box {
+			display: none;
+		}
+	}
+}
+
+@media (min-width: 1100px) {
+	.calendar-card.auto {
+		.box {
+			.day-mobile {
+				display: none;
+			}
+		}
+		.date-box {
+			display: flex;
+		}
+	}
+}

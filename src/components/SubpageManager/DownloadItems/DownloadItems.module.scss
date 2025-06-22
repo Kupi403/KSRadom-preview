@@ -1,0 +1,25 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes' as s;
+
+.downloads {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	.group {
+		display: flex;
+		flex-direction: column;
+
+		.title {
+			color: c.$pure-black;
+
+			padding: 10px 0;
+			gap: 10px;
+		}
+
+		.files {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+	}
+}

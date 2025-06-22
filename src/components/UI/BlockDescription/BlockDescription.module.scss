@@ -1,0 +1,15 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+
+.block-description {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-size: 16px;
+	white-space: pre-line;
+
+	@media (min-width: 480px) {
+		font-size: 18px;
+	}
+}

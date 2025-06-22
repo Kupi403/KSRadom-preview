@@ -1,0 +1,51 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+
+.manager {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	.links {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		gap: 10px;
+		@media (min-width: 512px) {
+			flex-direction: row;
+		}
+
+		.link {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+			gap: 5px;
+			background-color: c.$card-background;
+			box-shadow: c.$item-shadow;
+			color: c.$dark;
+			text-decoration: none;
+			font-weight: 500;
+			text-align: center;
+			border-radius: s.$radius;
+			text-transform: uppercase;
+			transition: color 0.3s;
+		}
+	}
+
+	.empty {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		a {
+			color: c.$dark;
+			text-transform: uppercase;
+			transition: color 0.3s;
+
+			&:hover {
+				color: c.$gray;
+			}
+		}
+	}
+}

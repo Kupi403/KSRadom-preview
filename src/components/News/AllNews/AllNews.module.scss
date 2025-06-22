@@ -1,0 +1,44 @@
+@use '@/styles/colors.scss' as c;
+.all-news {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 32px;
+
+	.title {
+		font-size: 32px;
+	}
+}
+
+.header {
+	display: flex;
+	justify-content: end;
+	width: 100%;
+	align-items: center;
+	z-index: 100;
+	margin-bottom: 25px;
+	gap: 10px;
+
+	.options {
+		display: flex;
+		gap: 10px;
+	}
+}
+
+.loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 20px;
+
+	.arrow {
+		background-color: c.$pure-white;
+		width: 20px;
+		height: 100%;
+	}
+	.bar {
+		background-color: c.$pure-white;
+		width: 50px;
+		height: 100%;
+	}
+}

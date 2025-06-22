@@ -1,0 +1,52 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes' as s;
+@use '@/styles/mixins.scss' as m;
+
+.loading {
+	height: 40px;
+	border-radius: 8px;
+	@include m.shimmer-effect();
+}
+
+.wrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 100%;
+
+	.icon {
+		position: absolute;
+		left: 12px;
+		color: c.$gray;
+		pointer-events: none;
+	}
+
+	.input {
+		width: 100%;
+		padding: 10px 36px;
+		border: 1px solid c.$gray-medium;
+		border-radius: 8px;
+		font-size: 16px;
+		transition: border-color 0.2s ease;
+		font-family: inherit;
+
+		&:focus {
+			border-color: c.$gray;
+			outline: none;
+		}
+	}
+
+	.clear {
+		position: absolute;
+		right: 12px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		color: c.$gray-medium;
+		padding: 4px;
+
+		&:hover {
+			color: c.$pure-black;
+		}
+	}
+}

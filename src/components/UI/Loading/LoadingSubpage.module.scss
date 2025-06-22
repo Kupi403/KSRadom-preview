@@ -1,0 +1,19 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes' as s;
+@use '@/styles/mixins.scss' as m;
+
+.container {
+	position: relative;
+	width: 100%;
+	height: 50vh;
+	min-height: 300px;
+	max-height: 800px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.image {
+		pointer-events: none;
+		@include m.fadeIn3Parts(0.8, 0.3, 0.8);
+	}
+}

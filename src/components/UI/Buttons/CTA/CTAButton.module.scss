@@ -1,0 +1,121 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+
+.cta-button {
+	position: relative;
+	display: inline-block;
+	padding: 16px;
+	max-width: 300px;
+	width: 200px;
+	text-decoration: none;
+	border: 1px solid transparent;
+	box-shadow: c.$item-shadow;
+	color: c.$pure-black;
+	border-radius: s.$radius;
+	text-align: center;
+	overflow: hidden;
+	text-transform: uppercase;
+	font-weight: bold;
+	cursor: pointer;
+	transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+	&:disabled {
+		opacity: 0.3;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+}
+.primary {
+	background: c.$red-gradient;
+	color: c.$pure-white;
+	border: 3px solid c.$red;
+	&:hover {
+		background-color: c.$red;
+		border: 3px solid c.$light-red;
+	}
+}
+
+.secondary {
+	background: c.$light-gold-transparent;
+	color: c.$pure-white;
+	border: 3px solid c.$gold;
+
+	&:hover,
+	&:focus {
+		background: c.$gold;
+		border: 3px solid c.$light-gold;
+	}
+}
+
+.tertiary {
+	position: relative;
+	box-shadow: none;
+	font-weight: 500;
+	text-transform: none;
+	padding: 10px;
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translatex(-50%);
+		width: 60%;
+		height: 3px;
+		background: linear-gradient(90deg, #ebebeb00 0%, c.$gold 50%, #ebebeb00 100%);
+		opacity: 0.3;
+		transition: opacity 0.3s;
+	}
+	&:hover::after,
+	&:focus::after {
+		opacity: 1;
+	}
+}
+
+.download {
+	width: 100%;
+	transition: none;
+}
+
+.error {
+	background: c.$dark;
+	color: c.$pure-white;
+	font-weight: normal;
+
+	&:hover,
+	&:focus {
+		background: c.$gray;
+	}
+}
+.icon {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	gap: 5px;
+}
+
+.effect {
+	transition: all 0.2s linear 0s;
+
+	&:before {
+		content: '➜';
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		right: -3px;
+		top: 0;
+		opacity: 0;
+		height: 100%;
+		width: 40px;
+		transition: text-indent 0.2s linear, opacity 0.2s linear 0s;
+	}
+
+	&:hover {
+		text-indent: -10px;
+
+		&:before {
+			opacity: 1;
+			text-indent: 0px;
+		}
+	}
+}

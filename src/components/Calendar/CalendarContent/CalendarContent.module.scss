@@ -1,0 +1,219 @@
+@use '@/styles/sizes' as s;
+@use '@/styles/colors' as c;
+@use '@/styles/mixins.scss' as m;
+
+.grid {
+	position: relative;
+	display: grid;
+	flex-direction: column;
+	border: 2px solid c.$gray-medium;
+	border-radius: s.$radius;
+	width: 100%;
+	height: 100%;
+	min-height: 500px;
+	overflow-y: auto;
+
+	.day-names {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		width: 100%;
+		.dayName {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-weight: bold;
+			text-align: center;
+			padding: 10px;
+			max-height: 50px;
+			min-width: 50px;
+			background-color: c.$gray-light;
+			border: 1px solid c.$gray-medium;
+			color: c.$dark;
+			border-top: none;
+			font-size: 16px;
+
+			&:first-child {
+				border-left: none;
+			}
+
+			&:last-child {
+				border-right: none;
+			}
+
+			.full {
+				display: none;
+			}
+			@media (min-width: 992px) {
+				font-size: 14px;
+				.full {
+					display: block;
+				}
+
+				.short {
+					display: none;
+				}
+			}
+
+			@media (min-width: 1200px) {
+				font-size: 16px;
+			}
+		}
+	}
+
+	.calendar-days {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		&.loading {
+			.day {
+				@include m.shimmer-effect();
+				border: 1px solid c.$gray;
+			}
+		}
+		.day {
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			background-color: c.$card-background;
+			border: 1px solid c.$gray-light;
+
+			padding: 5px;
+			gap: 10px;
+			min-height: 130px;
+			height: 100%;
+			max-height: 300px;
+			min-width: 100px;
+			font-size: 10px;
+			color: c.$dark;
+			transition: background 0.3s;
+
+			&:nth-child(-n + 7) {
+				border-top: 1px solid c.$gray-medium;
+				border-radius: none;
+			}
+
+			.dayNumber {
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				gap: 10px;
+				text-align: right;
+				font-size: 14px;
+				color: c.$gray-medium;
+
+				@media (min-width: 512px) {
+					top: 5px;
+					right: 5px;
+				}
+			}
+			.active {
+				color: c.$dark;
+			}
+
+			.dot {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				background-color: c.$light-red;
+				box-shadow: 0 0 5px c.$light-red;
+				border-radius: 50%;
+				@include m.blink();
+			}
+			&:hover {
+				background: c.$section-background;
+			}
+
+			.event {
+				position: relative;
+				padding: 5px;
+
+				background-color: c.$card-background;
+				border-radius: s.$radius;
+				box-shadow: c.$item-shadow;
+				cursor: pointer;
+
+				&::before {
+					content: '';
+					position: absolute;
+					height: calc(100% - 10px);
+					width: 2px;
+					border-radius: s.$radius;
+					background-color: c.$light-red;
+				}
+
+				.name {
+					font-weight: 500;
+					margin-bottom: 3px;
+				}
+				.name,
+				.time {
+					margin-left: 5px;
+					font-size: 14px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+
+				.time {
+					display: flex;
+					align-items: center;
+					gap: 5px;
+
+					font-size: 12px;
+				}
+			}
+			.inactive {
+				opacity: 0.5;
+				user-select: none;
+				pointer-events: none;
+				cursor: auto !important;
+			}
+
+			.more {
+				position: relative;
+				display: inline-block;
+				margin: 0 auto;
+				width: fit-content;
+				padding: 5px;
+				background-color: c.$card-background;
+				border: none;
+				border-radius: s.$radius;
+				box-shadow: c.$item-shadow;
+				cursor: pointer;
+			}
+			.dropdown {
+				position: absolute;
+				display: flex;
+				flex-direction: column;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 110%;
+				min-width: 150px;
+				height: fit-content;
+				padding: 20px 10px;
+				margin-top: 5px;
+				gap: 10px;
+				border-radius: s.$radius;
+				box-shadow: c.$item-shadow;
+				background-color: c.$card-background;
+				z-index: 100;
+
+				button {
+					border: none;
+					background-color: transparent;
+					cursor: pointer;
+				}
+
+				&.left-side {
+					left: 100px;
+				}
+				&.right-side {
+					left: 0;
+				}
+			}
+		}
+	}
+}

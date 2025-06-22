@@ -1,0 +1,32 @@
+.wrapper {
+	margin: 0 auto;
+	max-width: 1431px;
+	padding: 15px;
+	width: 100%;
+}
+
+.main {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 15px;
+	align-items: flex-start;
+	z-index: 0;
+}
+
+.not-found {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+	padding: 15px;
+	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.main {
+		flex-direction: row;
+	}
+}

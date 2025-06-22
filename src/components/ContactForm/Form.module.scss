@@ -1,0 +1,82 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+
+.form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 10px;
+	padding: 10px 0;
+	border-radius: s.$radius;
+	box-shadow: c.$gray-shadow;
+
+	.button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+.group {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	@media (min-width: 512px) {
+		flex-direction: row;
+	}
+
+	.controls {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		width: 100%;
+
+		.label {
+			margin-bottom: 10px;
+		}
+		.buttons {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}
+
+.messageGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+// .label {
+// 	font-size: 16px;
+// 	font-weight: 600;
+// 	color: c.$dark;
+// }
+
+// .input {
+// 	padding: 10px;
+// 	font-size: 16px;
+// 	border: 1px solid c.$gray-medium;
+// 	border-radius: s.$radius;
+// 	background-color: c.$pure-white;
+// 	color: c.$dark;
+
+// 	&:focus {
+// 		outline: none;
+// 		border-color: c.$light-gold;
+// 		box-shadow: 0 0 0 2px c.$gold-200;
+// 	}
+
+// 	&.error {
+// 		border-color: c.$red;
+// 		box-shadow: 0 0 0 2px c.$light-red;
+// 	}
+// }
+
+// .textarea {
+// 	@extend .input;
+// 	min-height: 150px;
+// 	resize: vertical;
+// }

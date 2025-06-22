@@ -1,0 +1,14 @@
+.aside {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 15px;
+
+	@media (min-width: 768px) and (max-width: 1200px) {
+		width: 50%;
+	}
+
+	@media (min-width: 1200px) {
+		width: 40%;
+	}
+}

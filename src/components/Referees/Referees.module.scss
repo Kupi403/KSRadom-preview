@@ -1,0 +1,114 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+@use '@/styles/mixins.scss' as m;
+
+.list {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 30px;
+	h1 {
+		text-align: center;
+	}
+
+	.input {
+		&.mobile {
+			display: flex;
+			input {
+				width: 100%;
+			}
+			@media (min-width: 768px) {
+				display: none;
+			}
+		}
+	}
+	.content {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: 20px;
+
+		@media (min-width: 768px) {
+			flex-direction: row;
+		}
+		.input {
+			.league {
+				padding: 10px 0;
+			}
+			&.desktop {
+				display: none;
+				@media (min-width: 768px) {
+					position: sticky;
+					top: 90px;
+					display: flex;
+					flex-direction: column;
+					gap: 5px;
+					width: 30%;
+					min-width: 220px;
+					padding: 10px;
+					box-shadow: c.$item-shadow;
+					background-color: c.$card-background;
+					border-radius: s.$radius;
+
+					p {
+						cursor: pointer;
+						transition: color 0.2s;
+					}
+
+					.active {
+						font-weight: bold;
+						color: c.$gold;
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+		.groups {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			padding: 10px;
+			width: 100%;
+			min-height: 100px;
+			background-color: c.$card-background;
+			border-radius: s.$radius;
+			box-shadow: c.$item-shadow;
+
+			.league {
+				position: sticky;
+				top: 90px;
+				background: c.$red-gradient;
+				padding: 10px;
+				margin: 0;
+				width: 100%;
+				border-radius: s.$radius;
+				overflow: hidden;
+				text-align: center;
+
+				h3 {
+					color: c.$pure-white;
+				}
+			}
+			.group {
+				display: flex;
+				flex-direction: column;
+				scroll-margin-top: 90px;
+				padding: 10px 0;
+
+				.referees {
+					margin-left: 30px;
+
+					.referee {
+						padding: 10px 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+.appear {
+	@include m.fadeInPast();
+}

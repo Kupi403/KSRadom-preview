@@ -1,0 +1,64 @@
+@use '@/styles/sizes' as s;
+@use '@/styles/colors' as c;
+
+.links {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 10px;
+
+	.link {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100px;
+		border-radius: s.$radius;
+		box-shadow: c.$item-shadow;
+		overflow: hidden;
+		&:hover .image::after {
+			opacity: 0.7;
+		}
+
+		&:hover .image {
+			filter: grayscale(0);
+		}
+		span {
+			color: c.$pure-white;
+			font-size: 18px;
+			text-decoration: underline;
+			text-align: center;
+			z-index: 10;
+
+			@media (min-width: 512px) {
+				font-size: 20px;
+			}
+		}
+	}
+	.image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		gap: 10px;
+		filter: grayscale(0.8);
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+			background: c.$dark;
+			opacity: 0.8;
+			z-index: 1;
+			transition: opacity 0.3s;
+		}
+
+		img {
+			object-fit: cover;
+		}
+	}
+}

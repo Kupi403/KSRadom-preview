@@ -1,0 +1,71 @@
+@use '@/styles/sizes' as s;
+@use '@/styles/colors' as c;
+
+.course-info {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	@media (min-width: 1200px) {
+		flex-direction: row;
+	}
+	h2 {
+		text-align: center;
+	}
+
+	.box {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		.date {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+			padding: 20px;
+			text-align: center;
+			border-radius: s.$radius;
+			box-shadow: c.$item-shadow;
+			background-color: c.$gold;
+			color: c.$dark;
+
+			p {
+				font-size: 20px;
+			}
+		}
+
+		.image {
+			display: flex;
+			align-items: center;
+			position: relative;
+			min-width: 600px;
+			height: auto;
+
+			img {
+				aspect-ratio: 1/1;
+				height: min-content;
+				object-fit: contain;
+			}
+		}
+	}
+	.form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		place-self: flex-start;
+		width: 100%;
+		gap: 10px;
+		padding: 20px;
+
+		background-color: c.$pure-white;
+		box-shadow: c.$item-shadow;
+		border-radius: s.$radius;
+
+		@media (min-width: 1200px) {
+			position: sticky;
+			top: 90px;
+		}
+	}
+}

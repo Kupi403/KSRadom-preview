@@ -1,0 +1,29 @@
+.creation-info {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+
+	@media (min-width: 320px) {
+		gap: 25px;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	@media (min-width: 512px) {
+		justify-content: flex-start;
+	}
+
+	.box {
+		display: flex;
+		align-items: center;
+		font-size: 12px;
+
+		@media (min-width: 480px) {
+			font-size: 14px;
+		}
+
+		svg {
+			margin-right: 5px;
+		}
+	}
+}

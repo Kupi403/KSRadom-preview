@@ -1,0 +1,150 @@
+@use '@/styles/sizes' as s;
+@use '@/styles/colors' as c;
+@use '@/styles/mixins.scss' as m;
+
+.menu {
+	display: none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 30%;
+	justify-content: space-evenly;
+	font-weight: 500;
+
+	@media (min-width: 1440px) {
+		display: flex;
+	}
+
+	&.div {
+		justify-content: flex-start;
+	}
+
+	&.left {
+		flex: 1;
+		margin-right: 48px;
+	}
+
+	&.right {
+		flex: 1;
+		margin-left: 48px;
+	}
+
+	.item {
+		position: relative;
+		margin-right: 5px; // 0.2em
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		.mobile {
+			position: absolute;
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background-color: c.$pure-white;
+			z-index: 1000;
+		}
+
+		.link {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+			text-decoration: none;
+			color: c.$pure-white;
+			font-size: 16px;
+			padding: 10px;
+			transition: color 0.3s;
+			text-transform: uppercase;
+
+			&.dropdown {
+				transition: transform 0.3s;
+
+				&:hover img {
+					transform: rotate(180deg);
+				}
+			}
+
+			&:hover::after {
+				opacity: 1;
+			}
+
+			&:hover,
+			&:active {
+				color: c.$section-background;
+				opacity: 1;
+			}
+
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 100%;
+				height: 3px;
+				border-radius: s.$radius;
+				background: linear-gradient(90deg, #ebebeb00 0%, c.$gold 50%, #ebebeb00 100%);
+				opacity: 0;
+				transition: opacity 0.3s;
+			}
+		}
+
+		.submenu {
+			z-index: 9999;
+			display: flex;
+			flex-direction: column;
+			list-style: none;
+			margin-inline-start: 0;
+			line-height: normal;
+			min-width: 200px;
+			position: absolute;
+			top: 50px;
+			left: 0;
+			background-color: c.$card-background;
+			border-radius: s.$radius;
+			box-shadow: c.$item-shadow;
+			transition: opacity 0.3s ease, transform 0.3s ease;
+			opacity: 0;
+			transform: translateY(-10px);
+			pointer-events: none;
+		}
+
+		&:hover .submenu,
+		&:active .submenu {
+			opacity: 1;
+			transform: translateY(0);
+			pointer-events: auto;
+		}
+
+		.submenu-item {
+			border-radius: s.$radius;
+			text-transform: uppercase;
+			margin-inline-start: 0;
+			line-height: normal;
+
+			a {
+				display: inline-block;
+				padding: 20px;
+				width: 100%;
+				white-space: nowrap;
+				text-transform: uppercase;
+			}
+
+			&:hover {
+				background-color: c.$section-background;
+			}
+		}
+
+		.submenu-link {
+			color: c.$dark;
+			text-decoration: none;
+			font-size: 14px;
+			text-transform: none;
+		}
+	}
+}

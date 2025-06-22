@@ -1,0 +1,20 @@
+.button {
+	cursor: pointer;
+	transition: transform 0.3s;
+}
+
+.up {
+	transform: rotate(-90deg);
+}
+
+.down {
+	transform: rotate(90deg);
+}
+
+.left {
+	transform: rotate(180deg);
+}
+
+.right {
+	transform: rotate(0deg);
+}

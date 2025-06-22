@@ -1,0 +1,58 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+@use '@/styles/mixins.scss' as m;
+
+.accordionItem {
+	display: flex;
+	flex-direction: column;
+	border-radius: s.$radius;
+
+	&.loading {
+		height: 50px;
+		@include m.shimmer-effect();
+	}
+
+	.question {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		gap: 10px;
+		border: none;
+		box-shadow: c.$item-shadow;
+		text-align: left;
+		font-size: 16px;
+		padding: 16px;
+		background-color: c.$card-background;
+		cursor: pointer;
+		transition: background 0.3s, box-shadow 0.3s;
+
+		&:hover {
+			background-color: c.$gray-light;
+		}
+	}
+
+	.content {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.4s ease;
+		overflow: hidden;
+
+		&.open {
+			grid-template-rows: 1fr;
+		}
+	}
+
+	.inner {
+		min-height: 0;
+	}
+
+	.answer {
+		padding: 16px;
+		color: c.$dark;
+		font-size: 16px;
+		background-color: c.$pure-white;
+		box-shadow: c.$item-shadow;
+		line-height: 1.5;
+	}
+}

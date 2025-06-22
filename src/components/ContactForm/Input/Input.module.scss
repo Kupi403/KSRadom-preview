@@ -1,0 +1,87 @@
+@use '@/styles/colors.scss' as c;
+@use '@/styles/sizes.scss' as s;
+
+.input-box {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	.label {
+		font-size: 16px;
+		font-weight: 600;
+		margin-bottom: 10px;
+		color: c.$dark;
+
+		&.button-box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: fit-content;
+			gap: 5px;
+		}
+
+		&.checkbox-box {
+			display: flex;
+			align-items: start;
+			gap: 10px;
+			cursor: pointer;
+			&.label {
+				font-size: 12px;
+				font-weight: normal;
+			}
+			input {
+				width: auto;
+			}
+		}
+	}
+	.input {
+		padding: 5px 10px;
+		border: 2px solid c.$gray-light;
+		border-radius: s.$radius;
+		font-size: 16px;
+		line-height: 1.5;
+		transition: border-color 0.2s;
+
+		&:focus,
+		&:focus-visible {
+			border-color: c.$light-gold;
+			outline: none;
+		}
+
+		&.outline {
+			&:focus,
+			&:focus-visible {
+				outline: 2px solid c.$light-gold;
+			}
+		}
+	}
+
+	.textarea {
+		@extend .input;
+		resize: vertical;
+		min-height: 100px;
+
+		max-height: 600px;
+		overflow: auto;
+	}
+
+	.button button {
+		&:focus,
+		&:focus-visible {
+			border-color: c.$light-gold;
+		}
+	}
+
+	.errorContainer {
+		height: 30px;
+
+		.message {
+			color: c.$light-red;
+			margin-top: 5px;
+			font-size: 12px;
+
+			@media (min-width: 768px) {
+				font-size: 14px;
+			}
+		}
+	}
+}

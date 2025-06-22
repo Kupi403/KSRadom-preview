@@ -1,0 +1,111 @@
+@use '@/styles/sizes' as s;
+@use '@/styles/colors' as c;
+@use '@/styles/mixins.scss' as m;
+
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 998;
+}
+
+.modal {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	background: c.$pure-white;
+	box-shadow: c.$item-shadow;
+	border-radius: 8px;
+	max-width: 800px;
+	width: 90%;
+	@include m.fadeInPast();
+
+	.image {
+		position: relative;
+		height: 200px;
+		width: 100%;
+		background-size: cover;
+		background-position: center;
+		border-radius: s.$radius s.$radius 0 0;
+		overflow: hidden;
+
+		@media (min-width: 512px) {
+			height: 300px;
+		}
+	}
+	.modal-content {
+		display: flex;
+		flex-direction: column;
+		padding: 20px;
+		gap: 20px;
+		max-height: 400px;
+		overflow-y: auto;
+
+		h2 {
+			font-size: 22px;
+			margin-bottom: 10px;
+			color: c.$pure-black;
+		}
+		.subtitles {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: 20px;
+
+			@media (min-width: 512px) {
+				flex-direction: row;
+			}
+			.info {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+			}
+			.subtitle {
+				display: flex;
+				flex-direction: column;
+
+				.info {
+					display: flex;
+					align-items: center;
+					flex-direction: row;
+					gap: 10px;
+					margin-bottom: 5px;
+					font-weight: 600;
+					color: c.$dark;
+					text-transform: uppercase;
+				}
+
+				.content {
+					display: flex;
+				}
+				p {
+					overflow-wrap: anywhere;
+				}
+			}
+		}
+	}
+
+	.close {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		border-radius: s.$radius;
+		border: none;
+		background-color: c.$black-shadow;
+
+		color: c.$pure-white;
+		padding: 10px;
+		cursor: pointer;
+		z-index: 100;
+	}
+}
