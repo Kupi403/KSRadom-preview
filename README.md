@@ -36,3 +36,32 @@ Planned deployment: **July 2025**.
   - Media Library – file/image upload and management  
   - API endpoints – dynamic content fetching  
   - Role-based access for content editing and publishing
+
+## 🚀 How to Run the Project Locally
+
+1. Clone the repository and navigate to the project folder:
+
+```bash
+git clone https://github.com/your-username/KSRadom-preview.git
+cd KSRadom-preview
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+4. Open your browser and visit:
+
+```
+http://localhost:3000
+```
+
+The project should now be running in development mode with database connection.
