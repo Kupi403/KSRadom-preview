@@ -42,7 +42,7 @@ Planned deployment: **July 2025**.
 1. Clone the repository and navigate to the project folder:
 
 ```bash
-git clone https://github.com/your-username/KSRadom-preview.git
+git clone https://github.com/Kupi403/KSRadom-preview.git
 cd KSRadom-preview
 ```
 
