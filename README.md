@@ -1,13 +1,12 @@
-## 📰 Komisja Sędziowska Radom **(in progress)**
+## 📰 Komisja Sędziowska Radom - official website for Radom referee committee
 
-👀 [Demo, not completed version preview 🔗](http://93.127.186.161/) <br />
+👀 [LIVE 🔗](https://ksradom.pl) <br />
 🔗 [REPOSITORY](https://github.com/Kupi403/ksradom-preview)
 
 **CODE ONLY PREVIEW**
 
-An upcoming responsive information portal for the Referee Committee in Radom. The website will provide referees with categorized news, referee listings, scheduled events, training materials and more.
+An responsive information portal for the Referee Committee in Radom. The website provides referees info with categorized news, referee listings, scheduled events, training materials and more.
 Build with Next.js for frontend and Strapi for backend.
-Planned deployment: **July 2025**.
 
 ### 🔍 App Features
 
@@ -36,32 +35,3 @@ Planned deployment: **July 2025**.
   - Media Library – file/image upload and management  
   - API endpoints – dynamic content fetching  
   - Role-based access for content editing and publishing
-
-## 🚀 How to Run the Project Locally
-
-1. Clone the repository and navigate to the project folder:
-
-```bash
-git clone https://github.com/Kupi403/KSRadom-preview.git
-cd KSRadom-preview
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Start the development server:
-
-```bash
-npm run dev
-```
-
-4. Open your browser and visit:
-
-```
-http://localhost:3000
-```
-
-The project should now be running in development mode with database connection.
